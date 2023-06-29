@@ -1,0 +1,4 @@
+
+W,H = 1200,800
+TAMAÑO_PANTALLA = (W,H)
+FPS = 18

@@ -1,5 +1,6 @@
 import pygame
 import re
+from settings import *
 from GameObject import GameObject
 from Plataforma import Plataforma
 
@@ -111,6 +112,10 @@ class Personaje(GameObject):
             self._lados = self.get_rectangulos()
         else:
             self._bandera_suelo = False
+        if self._lados["top"].colliderect(piso._rectangulo):
+            self._velocidad_y = 0
+            self._rectangulo.top = piso._rectangulo.bottom -5
+            self._lados = self.get_rectangulos()
     
 
         
@@ -140,7 +145,7 @@ class Personaje(GameObject):
     
     #mUEVO EL RECTANGULO EN EL EJE X
     def mover_personaje_x(self,x):
-        if x == 1 and (self._rectangulo.x + self._velocidad_x)< 1600:
+        if x == 1 and (self._rectangulo.x + self._velocidad_x)< W:
             for lado in self._lados:
                 self._lados[lado].x += self._velocidad_x
         

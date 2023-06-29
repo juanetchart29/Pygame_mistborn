@@ -25,52 +25,52 @@ def definir_imagenes_lista(lista_imagenes:list):
 #fotogramas de las animaciones 
 
 #path fondo de prueba
-lista_fondos_lvl_1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\src\fondos\fondo_nocturno.png"]
+lista_fondos_lvl_1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\fondos\fondo_nocturno.png"]
 
 #path plataformas
 
 
 #path vin quieta derecha
-vin_quieta_derecha = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\quieta\\quieta derecha.png"]
+vin_quieta_derecha = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\quieta\\quieta derecha.png"]
 
 #path vin quieta izquierda
-vin_quieta_izquierda = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\quieta\\quieta izquierda.png"]
+vin_quieta_izquierda = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\quieta\\quieta izquierda.png"]
 
 #path vin corriendo derecha
-vin_corriendo_derecha=["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 1.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 2.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 3.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 4.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 5.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 6.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 7.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 8.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 9.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 10.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 11.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 12.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 13.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 14.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 15.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 16.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 17.png"   
+vin_corriendo_derecha=["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 1.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 2.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 3.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 4.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 5.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 6.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 7.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 8.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 9.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 10.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 11.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 12.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 13.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 14.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 15.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 16.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\CORRIENDO\\corriendo 17.png"   
 ]
 
-vin_atacando_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\atacando derecha\\2.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\atacando derecha\\3.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\atacando derecha\\4.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\atacando derecha\\5.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\atacando derecha\\6.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\atacando derecha\\7.png" ]
+vin_atacando_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\2.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\3.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\4.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\5.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\6.png",
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\7.png" ]
 
-vin_saltando_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\saltando\\subiendo.png"]
+vin_saltando_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\saltando\\subiendo.png"]
 
-vin_en_el_aire = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\saltando\\suspendida.png"]
-vin_callendo_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\saltando\\callendo1.png"]
+vin_en_el_aire = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\saltando\\suspendida.png"]
+vin_callendo_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\saltando\\callendo1.png"]
 
-vin_super_salto_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\saltando\\super salto.png"]
+vin_super_salto_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\saltando\\super salto.png"]
 
-vin_muerta = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\src\\personajes\\VIN\\muerta\\0.png"]
+vin_muerta = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\muerta\\0.png"]
 
 
 
@@ -87,7 +87,7 @@ diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    
                    }
 
-lista_plataformas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\src\plataformas\plataforma piedra.png"] 
+lista_plataformas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\plataformas\plataforma piedra.png"] 
 # diccionario_vin = definir_imagenes_dict(diccionario_vin)
 
 

@@ -5,6 +5,5 @@ _como hago para que mis funciones detecten las demas plataformas
 
 cosas por arreglar:
     ver el video de german para ver porque se me cae si salto much
-    blitear los las imagenes de las palataformas
-    _designar un rectangulo con el tamaño y la posicion antes de hacer la imagen 
-    cuando salto desde  alto y voy hasta la esquina derecha se cae
+
+    cuando salto desde  alto y voy hasta la esquina derecha se cae---> CUANDO SUPERA LA ALTURA MAXIMA, TENER EN CUENTA LA ALTURA Y TAMAÑO DE PANTALLA 

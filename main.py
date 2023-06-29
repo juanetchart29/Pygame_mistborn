@@ -1,13 +1,12 @@
 import pygame
+from settings import *
 from imagenes import *
 from funciones import *
 from ModoDesarrollador import *
 from PersonajePrincipal import PersonajePrincipal
 from Plataforma import Plataforma
 #-------CONSTANTES-------
-W,H = 1600,900
-TAMAÑO_PANTALLA = (W,H)
-FPS = 18
+
 
 
 
@@ -48,14 +47,14 @@ vin = PersonajePrincipal(tamaño_personaje,(x_inicial, y_inicial),diccionario_vi
 #/-----PERSONAJE-------
 
 #------Piso-----
-piso = Plataforma((1900,20),(0,vin._lados["main"].bottom-1),lista_plataformas)
+piso = Plataforma((1200,20),(0,vin._lados["main"].bottom-1),lista_plataformas)
 #/-----Piso-----
 
 #-------plataformas------
-plataforma1 = Plataforma((300,80),(500,600),lista_plataformas)
-plataforma2 = Plataforma((300,80),(700,700),lista_plataformas)
-plataforma3 = Plataforma((300,80),(400,500),lista_plataformas)
-plataforma4 = Plataforma((300,80),(500,300),lista_plataformas)
+plataforma1 = Plataforma((200,30),(500,600),lista_plataformas)
+plataforma2 = Plataforma((200,30),(700,700),lista_plataformas)
+plataforma3 = Plataforma((200,30),(400,500),lista_plataformas)
+plataforma4 = Plataforma((200,30),(500,300),lista_plataformas)
 
 lista_plataformas = [piso,plataforma1,plataforma2,plataforma3,plataforma4]
 

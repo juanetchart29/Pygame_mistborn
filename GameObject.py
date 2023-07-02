@@ -18,10 +18,11 @@ class GameObject :
         diccionario = {}
         principal = self._rectangulo
         diccionario["main"] = principal
+        # pygame.Rect(2,)
         diccionario["bottom"] = pygame.Rect(principal.left,principal.bottom -6,principal.width, 6)
-        diccionario["right"] = pygame.Rect(principal.right -3,principal.top,3,principal.height)
-        diccionario["left"] = pygame.Rect(principal.left,principal.top,3,principal.height)
-        diccionario["top"] = pygame.Rect(principal.left,principal.top,principal.width,10)
+        diccionario["right"] = pygame.Rect(principal.right -5,principal.top,6,principal.height)
+        diccionario["left"] = pygame.Rect(principal.left,principal.top,6,principal.height)
+        diccionario["top"] = pygame.Rect(principal.left,principal.top ,principal.width,10)#no tocar
         return diccionario
 
     def convertir_imagenes_lista(self):

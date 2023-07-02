@@ -72,8 +72,23 @@ vin_super_salto_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-lab
 
 vin_muerta = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\muerta\\0.png"]
 
+vin_empujando_d =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\proyect derecha\\0.png",
+                  "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\proyect derecha\\1.png",
+                  "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\proyect derecha\\2.png"]
 
 
+lista_proyectil =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\moneda1.png"]
+
+animacion_moneda_amarilla = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\0.png",
+                    "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\1.png",
+                    "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\2.png",
+                    "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\3.png"
+                    ]
+animacion_moneda_roja = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\4.png",
+                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\5.png",
+                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\6.png",
+                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\7.png"
+                         ]
 
 diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    "quieto_i":vin_quieta_derecha,
@@ -83,9 +98,16 @@ diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    "salta_i":vin_saltando_d,
                    "suspendido":vin_en_el_aire,
                    "cae_d":vin_callendo_d,
-                   "cae_i":vin_callendo_d
-                   
-                   }
+                   "cae_i":vin_callendo_d,
+                   "empujando_d":vin_empujando_d,
+                   "empujando_i":vin_empujando_d,
+                   "super_salto_d":vin_super_salto_d,
+                   "super_salto_i":vin_super_salto_d,
+                   "ataque_d":vin_atacando_d,
+                   "ataque_i":vin_atacando_d                   
+}
+
+
 
 lista_plataformas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\plataformas\plataforma piedra.png"] 
 # diccionario_vin = definir_imagenes_dict(diccionario_vin)

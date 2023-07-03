@@ -4,11 +4,11 @@ from settings import *
 from GameObject import GameObject
 from Plataforma import Plataforma
 from Proyectil import Proyectil
-
+from Coin import Coin
 
 
 class Personaje(GameObject):
-    def __init__(self, tamaño: tuple, posicion: tuple, diccionario_paths: dict,contador_pasos:int,nombre:str,potencia_salto : int,daño_ataque :int,score:int) -> None:
+    def __init__(self, tamaño: tuple, posicion: tuple, diccionario_paths: dict,contador_pasos:int,nombre:str,potencia_salto : int,daño_ataque :int,score:int,lista_imagen_proyectil:list) -> None:
         super().__init__(tamaño, posicion)
         
     #IMAGENES
@@ -19,6 +19,7 @@ class Personaje(GameObject):
         #establezco la primer imagen como el elemento [0] de la primer lista
         #para obtener los rectangulos
         self._imagen = self.lista_imagen_inicial[0]
+        self._imagen_proyectil = lista_imagen_proyectil
         
     #RECTANGULOS            
         self._rectangulo = self._imagen.get_rect()
@@ -37,13 +38,17 @@ class Personaje(GameObject):
         self._potencia_salto = -potencia_salto
         self._bandera_suelo = True
         self._aceleracion = 2
-        
+    #PROYECTILES 
+        self._lista_proyectiles = []
+    
+     
     #USUARIO
         self._nombre = nombre 
         self._vida = 100
         self._daño_ataque = daño_ataque
         self._score = score
-   
+        self._monedas = 0
+
 #---imagenes
     #cargo las imagenes de las listas de los diccionarios y las escalo.
     def convertir_imagenes_diccioario(self):
@@ -78,7 +83,7 @@ class Personaje(GameObject):
         
         
     #MUEVO AL PERSONAJE SEGUN SELF._QUE_HACE Y LO ANIMO
-    def update(self,pantalla,proyectil):
+    def update(self,pantalla):
         match self._que_hace:
             case "corre_d":
                 self.mover_personaje_x(1)
@@ -93,10 +98,11 @@ class Personaje(GameObject):
                     self._velocidad_y= self._potencia_salto
                 self._bandera_suelo = False
             case "empujando_d":
-                proyectil._lanzar_proyectil(1)
+                self.tirar_proyectil(pantalla,1)
             case "empujando_i":
-                proyectil._lanzar_proyectil(-1)
-                
+                self.tirar_proyectil(pantalla,-1)
+        
+        self.blitear_proyectiles(pantalla)
         self.animar(pantalla)
     
     #mUEVO EL RECTANGULO EN EL EJE X
@@ -176,8 +182,28 @@ class Personaje(GameObject):
         #     self._velocidad_y = 0
         #     self._rectangulo.top = piso._rectangulo.bottom +5
 
-
-
-       
-    
         self._lados = self.get_rectangulos()
+        
+        
+    #ver como hacer para que haga la animacion 
+    def tirar_proyectil(self,pantalla,x):
+
+        if self._que_hace.startswith("empujando_"):
+            # animaicon para tirar la moneda
+            # for imagen in self._dict_imagenes[self._que_hace]:
+            #     pantalla.blit(imagen,(self._rectangulo.x,self._rectangulo.y))
+            proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
+            proyectil_vin._activo = True
+            self._lista_proyectiles.append(proyectil_vin)
+        
+    def blitear_proyectiles(self,pantalla):
+        self._lista_proyectiles = [proyectil for proyectil in self._lista_proyectiles if proyectil._activo]
+        for proyectil in self._lista_proyectiles:
+            proyectil.lanzar_proyectil()
+            pantalla.blit(proyectil._imagen, (proyectil._rectangulo.x, proyectil._rectangulo.y))
+            
+
+    def agarrar_moneda(self,moneda:Coin):
+        if self._rectangulo.colliderect(moneda._rectangulo):
+            moneda._activo = False
+            self._monedas += 1

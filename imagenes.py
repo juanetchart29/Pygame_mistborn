@@ -3,24 +3,6 @@ import os
 
 pygame.init()
 
-def girar_imagenes(lista, flip_x, flip_y):
-    lista_girada = []
-    for imagen in lista:
-        
-        imagen_girada = pygame.transform.flip(imagen, flip_x, flip_y)  # Girar la imagen cargada
-        lista_girada.append(imagen_girada)  # Agregar la imagen girada a la lista
-    return lista_girada
-
-
-#tener cuidado si mis imagenes tienen tamaños distintos usar esta funcion
-
-
-
-def definir_imagenes_lista(lista_imagenes:list):
-    for imagen in lista_imagenes:
-        pygame.image.load(imagen)
-    return lista_imagenes
-
 
 #fotogramas de las animaciones 
 
@@ -79,16 +61,16 @@ vin_empujando_d =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1
 
 lista_proyectil =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\moneda1.png"]
 
-animacion_moneda_amarilla = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\0.png",
-                    "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\1.png",
-                    "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\2.png",
-                    "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\3.png"
-                    ]
-animacion_moneda_roja = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\4.png",
-                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\5.png",
-                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\6.png",
-                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\7.png"
-                         ]
+# animacion_moneda_amarilla = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\0.png",
+#                     "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\1.png",
+#                     "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\2.png",
+#                     "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\3.png"
+#                     ]
+# animacion_moneda_roja = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\4.png",
+#                          "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\5.png",
+#                          "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\6.png",
+#                          "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\7.png"
+#                          ]
 
 diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    "quieto_i":vin_quieta_derecha,
@@ -112,8 +94,20 @@ diccionario_vin = {"quieto_d":vin_quieta_derecha,
 lista_plataformas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\plataformas\plataforma piedra.png"] 
 # diccionario_vin = definir_imagenes_dict(diccionario_vin)
 
+#LISTA MONEDAS
+path_monedas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda1.png",
+        r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda2.png",
+        r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda3.png",
+        r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda4.png",
+        r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda5.png"]
 
+path_enemigos_i = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\9.png",
+r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\10.png",
+r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\11.png"]
 
+path_enemigos_attack_i = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\8.png"]
+
+diccionario_ogro ={"camina_derecha_i":path_enemigos_i,"camina_izquierda":path_enemigos_i,"ataca_derecha_i":path_enemigos_attack_i,"ataca_izquierda":path_enemigos_attack_i} 
 ########## pruebas de imagenes ###########
 #----imagenes----
 # lista_fondos  = cargar_imagenes(lista_fondos,"ff")

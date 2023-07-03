@@ -7,3 +7,11 @@ cosas por arreglar:
     ver el video de german para ver porque se me cae si salto much
 
     cuando salto desde  alto y voy hasta la esquina derecha se cae---> CUANDO SUPERA LA ALTURA MAXIMA, TENER EN CUENTA LA ALTURA Y TAMAÑO DE PANTALLA 
+
+
+CORREGIR: 
+LAS PlataformAS EL CHOQUE CON LA DERECHA Y LA IZQUIERDA
+CUANDO APRETO PARA EMPUJAR LA MONEDA QUE HAGA LA ANIMACION 
+QUE NO SE ENVIEN 3 MONEDAS, ANTIGHOSTING
+ahora que ya se hacer que anime el personaje antres de tirar la moneda, controlar la animacion ocn una BANDERAS
+

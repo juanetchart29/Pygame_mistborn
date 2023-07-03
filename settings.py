@@ -1,4 +1,4 @@
 
 W,H = 1500,750
 TAMAÑO_PANTALLA = (W,H)
-FPS = 18
+FPS = 120

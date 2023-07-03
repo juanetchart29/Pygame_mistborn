@@ -43,16 +43,18 @@ tamaño_personaje = (30,80)
 x_inicial = W/2 - 300
 y_inicial = H - tamaño_personaje[0  ] -50
 
-vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",30,0,50)
-proyectil_vin = Proyectil((20,20),(vin._rectangulo.x+vin._tamaño[0],vin._rectangulo.y+vin._tamaño[1]/2),lista_proyectil,50)
-
-
+vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",30,0,50,lista_proyectil)
 
 #/-----PERSONAJE-------
 
-#------PROYECTILES-------
-# proyectiles = [0,proyectil_vin]
-#/-----PROYECTILES-------
+#------MONEDAS-------
+coin_uno = Coin((50,50),(400,500),path_monedas,20)
+
+coin_dos = Coin((50,50),(400,H-300),path_monedas,20)
+coin_tres= Coin((50,50),(800,H-200),path_monedas,20)
+
+lista_monedas = [coin_dos,coin_tres,coin_uno]
+#/-----MONEDAS-------
 
 
 
@@ -87,10 +89,11 @@ while flag:
     lista_teclas = pygame.key.get_pressed()
             
     esta_pisando = piso
-    esta_pisando = cual_pisa(lista_plataformas,vin,piso)
-    acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_1,vin,esta_pisando,proyectil_vin)
+    esta_pisando = pisando_plataforma(lista_plataformas,vin,piso)
+    acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_1,vin,esta_pisando)
     
-    blitear_lista(lista_plataformas,PANTALLA)   
+    monedas(PANTALLA,lista_monedas,vin)
+    blitear_pisos(lista_plataformas,PANTALLA)   
     if get_modo()==True:
         for lado in piso._lados:
             pygame.draw.rect(PANTALLA,"Blue",piso._lados[lado],1)
@@ -104,8 +107,9 @@ while flag:
             pygame.draw.rect(PANTALLA,"orange",plataforma3._lados[lado],1)
         for lado in plataforma4._lados:
             pygame.draw.rect(PANTALLA,"white",plataforma4._lados[lado],1)
-        pygame.draw.rect(PANTALLA,"red",proyectil_vin._rectangulo )
-    
+        for proyectil in vin._lista_proyectiles:
+            if proyectil._activo == True:
+                pygame.draw.rect(PANTALLA,"red",proyectil._rectangulo)
         
     
         

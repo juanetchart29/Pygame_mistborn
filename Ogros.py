@@ -6,7 +6,7 @@ class Ogros(Enemigo):
     def __init__(self, tamaño: tuple, posicion: tuple, diccionario_imagenes: dict,rango_movimiento_x:int,velocidad:int,tipo:str) -> None:
         super().__init__(tamaño, posicion, diccionario_imagenes)
         self._rango_movimiento = rango_movimiento_x
-        
+
         self._velocidad = velocidad
         self._vida = 100
         self._daño = 50
@@ -17,20 +17,21 @@ class Ogros(Enemigo):
 
 
     def accion_enemigo(self,un_personaje,pantalla):
-        if self._velocidad >= 0:
-            if self._rectangulo.colliderect(un_personaje._rectangulo):
-                self._que_hace = "ataca_derecha_i"
-                un_personaje._vida -= self._daño
+        if self._tipo == "ida_vuelta":    
+            if self._velocidad >= 0:
+                if self._rectangulo.colliderect(un_personaje._rectangulo):
+                    self._que_hace = "ataca_derecha_i"
+                    un_personaje._vida -= self._daño
+                else:
+                    self._que_hace = "camina_derecha_i"
+                    self.mover_enemigo_estable()
             else:
-                self._que_hace = "camina_derecha_i"
-                self.mover_enemigo_estable()
-        else:
-            if self._rectangulo.colliderect(un_personaje._rectangulo):
-                self._que_hace = "ataca_izquierda"
-                un_personaje._vida -= self._daño
-            else:
-                self._que_hace = "camina_izquierda"
-                self.mover_enemigo_estable()
+                if self._rectangulo.colliderect(un_personaje._rectangulo):
+                    self._que_hace = "ataca_izquierda"
+                    un_personaje._vida -= self._daño
+                else:
+                    self._que_hace = "camina_izquierda"
+                    self.mover_enemigo_estable()
             
         self.animar_enemigo(pantalla)
             

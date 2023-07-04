@@ -7,13 +7,12 @@ from Proyectil import Proyectil
 # -----BANDERAS------
 
 
-
-def actualizar_pantalla(pantalla,fondo:list,un_personaje):
+def actualizar_pantalla(pantalla,fondo:list,un_personaje,lista_enemigos,lista_plataformas):
     pantalla.blit(fondo[0],(0,0))
-    un_personaje.update(pantalla)
+    un_personaje.update(pantalla,lista_enemigos,lista_plataformas)
     
     
-def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Personaje,piso,lista_plataformas):
+def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Personaje,piso,lista_plataformas,lista_enemigos):
     """
     lee las teclas presionadas y asigna una acciona un_personaje._que_hace luego updeate pantalla
     """
@@ -26,8 +25,7 @@ def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Person
             # else:
             #     un_personaje._bandera_ataque = False
                 
-            if lista_teclas[pygame.K_SPACE]:
-                
+            if lista_teclas[pygame.K_a]:
                 if un_personaje._bandera_lado == "derecha":
                     un_personaje._que_hace ="empujando_d"
         
@@ -72,12 +70,18 @@ def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Person
                     
                 un_personaje._velocidad_x = 10
                 un_personaje.mover_personaje_x(-1)
-
+            elif lista_teclas[pygame.K_s]:
+                un_personaje._bandera_suelo = False
+                if un_personaje._bandera_lado == "derecha":
+                    un_personaje._que_hace = "super_salto_d"
+                else:
+                    un_personaje._que_hace = "super_salto_i"
+                un_personaje._velocidad_y  = un_personaje._potencia_super_salto
         #le aplico siempre gravedad      
         un_personaje.aplicar_gravedad(pantalla,piso,lista_plataformas)
 
         #actualizo la pantalla para las animaciones del personaje
-        actualizar_pantalla(pantalla,fondo,un_personaje)
+        actualizar_pantalla(pantalla,fondo,un_personaje,lista_enemigos,lista_plataformas)
     else:
         un_personaje._que_hace = "muriendo"
         un_personaje.animacion_especifica(pantalla)
@@ -110,7 +114,9 @@ def monedas(pantalla,lista_monedas,un_personaje:Personaje):
 
 def ogros(pantalla,lista_ogros,un_personaje:Personaje):
     for ogro in lista_ogros:
-        ogro.accion_enemigo(un_personaje,pantalla)
+        if ogro._vida > 0:
+            ogro.accion_enemigo(un_personaje,pantalla)
+            # print(ogro._vida)
     
 
 # def blitear_proyectil(proyectil:Proyectil,pantalla):

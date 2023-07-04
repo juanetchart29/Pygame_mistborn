@@ -38,9 +38,10 @@ class Personaje(GameObject):
         self._potencia_salto = -potencia_salto
         self._bandera_suelo = True
         self._aceleracion = 2
+        self._potencia_super_salto = -20
     #PROYECTILES 
         self._lista_proyectiles = []
-    
+        self._call_down = True
      
     #USUARIO
         self._contador = 0
@@ -53,7 +54,7 @@ class Personaje(GameObject):
         self._con_vida = True
         self._bandera_ataque = False
     #TAMAÑO ATAQUE 
-        self._tamaño_ataque = (100,70)
+        self._tamaño_ataque = (100,90)
 
 #---imagenes
     #cargo las imagenes de las listas de los diccionarios y las escalo.
@@ -89,7 +90,7 @@ class Personaje(GameObject):
         
         
     #MUEVO AL PERSONAJE SEGUN SELF._QUE_HACE Y LO ANIMO
-    def update(self,pantalla):
+    def update(self,pantalla,lista_enemigos:list,lista_plataformas):
         match self._que_hace:
             case "corre_d":
                 self.mover_personaje_x(1)
@@ -108,8 +109,8 @@ class Personaje(GameObject):
             case "empujando_i":
                 self.tirar_proyectil(pantalla,-1)
     
-        self.atacar(pantalla)
-        self.blitear_proyectiles(pantalla)
+        self.atacar(pantalla,lista_enemigos)
+        self.ataque_proyectil(pantalla,lista_enemigos,lista_plataformas)
         
     
     #mUEVO EL RECTANGULO EN EL EJE X
@@ -123,47 +124,6 @@ class Personaje(GameObject):
                 self._lados[lado].x -= self._velocidad_x
    
   
-    def animar_ataque_d(self,pantalla):
-        imagenes_lista = self._dict_imagenes["ataque_d"]
-        largo = len(imagenes_lista)
-        if self._contador//10 >= largo:
-            self._contador = 0
-            self._bandera_ataque = False
-            
-        animacion = imagenes_lista[self._contador//10]
-        imagen_agrandada = pygame.transform.scale(animacion,self._tamaño_ataque)
-        self._rectangulo_ataque = imagen_agrandada.get_rect()
-        self._rectangulo_ataque.center =(self._rectangulo.x,self._rectangulo.y+20)
-        pantalla.blit(imagen_agrandada,(self._rectangulo.x,self._rectangulo_ataque.y))
-        self._contador += 1
-        
-    def animar_ataque_i(self,pantalla):
-        imagenes_lista = self._dict_imagenes["ataque_i"]
-        largo = len(imagenes_lista)
-        if self._contador//10 >= largo:
-            self._contador = 0
-            self._bandera_ataque = False
-            
-        animacion = imagenes_lista[self._contador//10]
-        imagen_agrandada = pygame.transform.scale(animacion,self._tamaño_ataque)
-        self._rectangulo_ataque = imagen_agrandada.get_rect()
-        self._rectangulo_ataque.center =(self._rectangulo.x-60,self._rectangulo.y+20)
-        pantalla.blit(imagen_agrandada,(self._rectangulo.x,self._rectangulo_ataque.y))
-        self._contador += 1
-    
-        
-    def atacar(self,pantalla):
-        if self._bandera_ataque == True:
-            if self._bandera_lado == "derecha":
-                self.animar_ataque_d(pantalla)
-                self._bandera_lado = "derecha"
-            else :
-                self.animar_ataque_i(pantalla)
-                self._bandera_lado = "izquierda"
-        else: 
-            self.animar(pantalla)
-        
-            
 
             
     def verificar_colision_x(self,lista_plataformas:list):
@@ -228,12 +188,15 @@ class Personaje(GameObject):
         
     #ver como hacer para que haga la animacion 
     def tirar_proyectil(self,pantalla,x):
-
-        if self._que_hace.startswith("empujando_"):
-            # self.animacion_especifica(pantalla)
-            proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
-            proyectil_vin._activo = True
-            self._lista_proyectiles.append(proyectil_vin)
+                 
+        if self._que_hace.startswith("empujando_")  :
+                # self.animacion_especifica(pantalla)
+            if self._call_down == True:
+                proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
+                proyectil_vin._activo = True
+                self._lista_proyectiles.append(proyectil_vin)
+        else: 
+            self._call_down = False
         
     def blitear_proyectiles(self,pantalla):
         self._lista_proyectiles = [proyectil for proyectil in self._lista_proyectiles if proyectil._activo]
@@ -241,6 +204,12 @@ class Personaje(GameObject):
             proyectil.lanzar_proyectil()
             pantalla.blit(proyectil._imagen, (proyectil._rectangulo.x, proyectil._rectangulo.y))
             
+    def ataque_proyectil(self,pantalla,lista_enemigos,lista_plataformas):
+    
+        self.blitear_proyectiles(pantalla)
+        self.hacer_daño_distancia(lista_enemigos)
+        self.chocar_proyectil_plataforma(lista_plataformas)
+        
 
     def agarrar_moneda(self,moneda:Coin):
         if self._rectangulo.colliderect(moneda._rectangulo):
@@ -258,3 +227,69 @@ class Personaje(GameObject):
         pantalla.blit(animacion,(self._rectangulo.x,self._rectangulo.y))
         self._contador += 1
         
+    def hacer_daño_mele(self,lista_enemigos:list):
+        self._acaba_atacar = True
+        for enemigo in lista_enemigos:
+            if enemigo._rectangulo.colliderect(self._rectangulo_ataque) and self._bandera_ataque :
+                if self._acaba_atacar:
+                    enemigo._vida -= 3
+                    self._acaba_atacar = False
+            else :
+                self._acaba_atacar = True
+            
+
+    def hacer_daño_distancia(self,lista_enemigos):
+        for moneda in self._lista_proyectiles:
+            for enemigo in lista_enemigos:                
+                if enemigo._rectangulo.colliderect(moneda._rectangulo) and enemigo._vida > 0:
+                    enemigo._vida -= 20
+                    moneda._activo = False
+    def chocar_proyectil_plataforma(self,lista_plataforma):
+        for moneda in self._lista_proyectiles:
+            for plataforma in lista_plataforma:
+                if moneda._rectangulo.colliderect(plataforma._rectangulo):
+                    moneda._activo = False     
+                           
+    def animar_ataque_d(self,pantalla):
+        imagenes_lista = self._dict_imagenes["ataque_d"]
+        largo = len(imagenes_lista)
+        if self._contador//8 >= largo:
+            self._contador = 0
+            self._bandera_ataque = False
+            
+        animacion = imagenes_lista[self._contador//8]
+        imagen_agrandada = pygame.transform.scale(animacion,self._tamaño_ataque)
+        self._rectangulo_ataque = imagen_agrandada.get_rect()
+        self._rectangulo_ataque.center =(self._rectangulo.x+50,self._rectangulo.y+20)
+        pantalla.blit(imagen_agrandada,(self._rectangulo.x,self._rectangulo_ataque.y))
+        self._contador += 1
+        
+    def animar_ataque_i(self,pantalla):
+        imagenes_lista = self._dict_imagenes["ataque_i"]
+        largo = len(imagenes_lista)
+        if self._contador//8 >= largo:
+            self._contador = 0
+            self._bandera_ataque = False
+            
+        animacion = imagenes_lista[self._contador//8]
+        imagen_agrandada = pygame.transform.scale(animacion,self._tamaño_ataque)
+        self._rectangulo_ataque = imagen_agrandada.get_rect()
+        self._rectangulo_ataque.center =(self._rectangulo.x,self._rectangulo.y+20)
+        pantalla.blit(imagen_agrandada,(self._rectangulo_ataque.x,self._rectangulo_ataque.y))
+        self._contador += 1
+    
+        
+    def atacar(self,pantalla,lista_enemigos:list):
+        if self._bandera_ataque == True:
+            if self._bandera_lado == "derecha":
+                self.animar_ataque_d(pantalla)
+                self._bandera_lado = "derecha"
+            else :
+                self.animar_ataque_i(pantalla)
+                self._bandera_lado = "izquierda"
+                
+            self.hacer_daño_mele(lista_enemigos)
+        else: 
+            self.animar(pantalla)
+        
+            

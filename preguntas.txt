@@ -15,6 +15,7 @@ CUANDO APRETO PARA EMPUJAR LA MONEDA QUE HAGA LA ANIMACION
 QUE NO SE ENVIEN 3 MONEDAS, ANTIGHOSTING, usando una bandera para  controlar que ya no se apreta el espacio
 ahora que ya se hacer que anime el personaje antres de tirar la moneda, controlar la animacion ocn una BANDERAS
 corregir la animacion de muerte de vin para que no vuelva a reproducirse
+corregir los lados de los GameObject para que no se pegue a la plataforma
 
 
 TENER EN CUENTA:
@@ -23,8 +24,9 @@ hacer funcion para animar mas lento animaciones especificas ver como cambiar de 
 
 POR HACER:
 SUPER salto
-ATAQUE A MELE
 
+---preguntar a ivo como y donde poner la bandera para los PROYECTILES
+--- bandera para el super salto(doble salto)
 
 
 

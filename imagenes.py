@@ -76,8 +76,6 @@ vin_muerta = [r"C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\M
 
 lista_proyectil =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\moneda1.png"]
 
-          
-
 diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    "quieto_i":vin_quieta_derecha,
                    "corre_d":vin_corriendo_derecha,
@@ -97,11 +95,11 @@ diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    "muerta":vin_muerta      
 }
 
+lista_viga1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\vigas\plataforma piedra.png"]
 
-
-lista_plataformas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\plataformas\plataforma piedra.png"] 
+lista_plataforma1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\plataformas\plataforma piedra.png"] 
 # diccionario_vin = definir_imagenes_dict(diccionario_vin)
-
+lista_plataforma2 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\plataformas\6 (2).png"]
 #LISTA MONEDAS
 path_monedas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda1.png",
         r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda2.png",

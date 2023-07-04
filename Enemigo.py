@@ -8,7 +8,10 @@ class Enemigo(GameObject):
         
         
         self._dict_path = diccionario_imagenes
-        self._dict_imagenes = self.convertir_imagenes_diccioario()
+        try :
+            self._dict_imagenes = self.convertir_imagenes_diccioario()
+        except:
+            self._dict_imagenes = self._dict_path
         self.lista_imagen_inicial = next(iter(self._dict_imagenes.values()))
         self._imagen = self.lista_imagen_inicial[0]
         

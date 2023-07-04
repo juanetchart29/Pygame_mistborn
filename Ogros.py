@@ -9,7 +9,7 @@ class Ogros(Enemigo):
 
         self._velocidad = velocidad
         self._vida = 100
-        self._daño = 50
+        self._daño = 1
         
         self._tipo = tipo
         

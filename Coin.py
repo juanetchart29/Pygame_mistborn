@@ -3,7 +3,7 @@ from GameObject import GameObject
 
 
 class Coin(GameObject):
-    def __init__(self, tamaño: tuple, posicion: tuple, lista_imagen:list ,score:int) -> None:
+    def __init__(self, tamaño: tuple, posicion: tuple, lista_imagen:list ,score:int,cura:bool) -> None:
         super().__init__(tamaño, posicion)
         self._score = score
         self._lista_paths = lista_imagen
@@ -13,6 +13,7 @@ class Coin(GameObject):
         self._rectangulo.y = posicion[1]
         self._contador = 0
         self._activo = True
+        self._cura = cura
         
     def animar_coin(self,pantalla): 
         
@@ -22,6 +23,8 @@ class Coin(GameObject):
         animacion = self._imagenes_lista[self._contador//4]
         pantalla.blit(animacion,(self._rectangulo.x,self._rectangulo.y))
         self._contador += 1
+        
+            
         
         
     

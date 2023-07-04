@@ -215,7 +215,12 @@ class Personaje(GameObject):
         if self._rectangulo.colliderect(moneda._rectangulo):
             moneda._activo = False
             self._monedas += 1
-        
+            if moneda._cura:
+                if self._vida +50 > 100:
+                    
+                    self._vida = 100
+                else:
+                    self._vida+= 50
     
     
     def animacion_especifica(self,pantalla):

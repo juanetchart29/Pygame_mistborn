@@ -29,5 +29,8 @@ SUPER salto
 --- bandera para el super salto(doble salto)
 
 
+preguntar cuando esta saltando si colisiona 
+humo cuanndo se mueren repo franco
+
 
 

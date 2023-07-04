@@ -9,6 +9,7 @@ pygame.init()
 #path fondo de prueba
 lista_fondos_lvl_1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\fondos\fondo_nocturno.png"]
 
+lista_fondos_lvl_2 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\fondos\NIVEL2.png"]
 #path plataformas
 
 
@@ -107,6 +108,8 @@ path_monedas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTB
         r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda4.png",
         r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda5.png"]
 
+path_moneda_roja = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\0.png"]
+
 path_enemigos_i = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\9.png",
 r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\10.png",
 r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\11.png"]
@@ -117,6 +120,8 @@ diccionario_ogro ={"camina_derecha_i":path_enemigos_i,
                    "camina_izquierda":path_enemigos_i,
                    "ataca_derecha_i":path_enemigos_attack_i,
                    "ataca_izquierda":path_enemigos_attack_i} 
+
+
 ########## pruebas de imagenes ###########
 #----imagenes----
 # lista_fondos  = cargar_imagenes(lista_fondos,"ff")

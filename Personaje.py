@@ -43,11 +43,17 @@ class Personaje(GameObject):
     
      
     #USUARIO
+        self._contador = 0
         self._nombre = nombre 
         self._vida = 100
         self._daño_ataque = daño_ataque
         self._score = score
         self._monedas = 0
+    #BANDERAS
+        self._con_vida = True
+        self._bandera_ataque = False
+    #TAMAÑO ATAQUE 
+        self._tamaño_ataque = (100,70)
 
 #---imagenes
     #cargo las imagenes de las listas de los diccionarios y las escalo.
@@ -101,9 +107,10 @@ class Personaje(GameObject):
                 self.tirar_proyectil(pantalla,1)
             case "empujando_i":
                 self.tirar_proyectil(pantalla,-1)
-        
+    
+        self.atacar(pantalla)
         self.blitear_proyectiles(pantalla)
-        self.animar(pantalla)
+        
     
     #mUEVO EL RECTANGULO EN EL EJE X
     def mover_personaje_x(self,x):
@@ -116,22 +123,66 @@ class Personaje(GameObject):
                 self._lados[lado].x -= self._velocidad_x
    
   
-    
-#    #animo como empuja el proyectil
-#     def proyectil(self,pantalla):
-#         if self._bandera_lado == "derecha":
-#             self._que_hace = "empujando_d"            
-#         else:
-#             self._que_hace = "empujando_i"
-#         self.anima(pantalla)
+    def animar_ataque_d(self,pantalla):
+        imagenes_lista = self._dict_imagenes["ataque_d"]
+        largo = len(imagenes_lista)
+        if self._contador//10 >= largo:
+            self._contador = 0
+            self._bandera_ataque = False
             
+        animacion = imagenes_lista[self._contador//10]
+        imagen_agrandada = pygame.transform.scale(animacion,self._tamaño_ataque)
+        self._rectangulo_ataque = imagen_agrandada.get_rect()
+        self._rectangulo_ataque.center =(self._rectangulo.x,self._rectangulo.y+20)
+        pantalla.blit(imagen_agrandada,(self._rectangulo.x,self._rectangulo_ataque.y))
+        self._contador += 1
+        
+    def animar_ataque_i(self,pantalla):
+        imagenes_lista = self._dict_imagenes["ataque_i"]
+        largo = len(imagenes_lista)
+        if self._contador//10 >= largo:
+            self._contador = 0
+            self._bandera_ataque = False
+            
+        animacion = imagenes_lista[self._contador//10]
+        imagen_agrandada = pygame.transform.scale(animacion,self._tamaño_ataque)
+        self._rectangulo_ataque = imagen_agrandada.get_rect()
+        self._rectangulo_ataque.center =(self._rectangulo.x-60,self._rectangulo.y+20)
+        pantalla.blit(imagen_agrandada,(self._rectangulo.x,self._rectangulo_ataque.y))
+        self._contador += 1
     
+        
+    def atacar(self,pantalla):
+        if self._bandera_ataque == True:
+            if self._bandera_lado == "derecha":
+                self.animar_ataque_d(pantalla)
+                self._bandera_lado = "derecha"
+            else :
+                self.animar_ataque_i(pantalla)
+                self._bandera_lado = "izquierda"
+        else: 
+            self.animar(pantalla)
+        
+            
+
+            
+    def verificar_colision_x(self,lista_plataformas:list):
+        for plataforma in lista_plataformas:
+            if plataforma._lados["right"].colliderect(self._lados["left"]) and self._bandera_lado =="izquierda" :
+                self._velocidad_x = 0
+            if plataforma._lados["left"].colliderect(self._lados["right"]) and self._bandera_lado == "derecha":
+                self._velocidad_x = 0
+            if plataforma._lados["bottom"].colliderect(self._lados["top"]):
+                self._rectangulo.top = plataforma._rectangulo.bottom +1
+                self._velocidad_y = -1
           
  
     #APLICO GRAVEDAD
-    def aplicar_gravedad(self,pantalla,piso:Plataforma):  
+    def aplicar_gravedad(self,pantalla,piso:Plataforma,lista_plataformas):  
         #si esta en el aire
+        
         if (self._bandera_suelo == False):
+            self.verificar_colision_x(lista_plataformas)
             if self._velocidad_y < 0 :
                 if self._bandera_lado == "derecha":
                     self._que_hace = "salta_d" 
@@ -158,29 +209,19 @@ class Personaje(GameObject):
             if self._velocidad_y + self._aceleracion < -(self._potencia_salto):
                 self._velocidad_y += self._aceleracion 
         
-
-        #si colisiona con una plataforma 
-        if self._rectangulo.colliderect(piso._rectangulo): 
-            if self._rectangulo.colliderect(piso._lados["left"]):
-
-                print("auxilio")
-            
-         
-            elif self._rectangulo.colliderect(piso._lados["top"]):
-                self._bandera_suelo = True
-                self._velocidad_y = 0
-                self._rectangulo.bottom = piso._rectangulo.top + 5
+        
+        self.verificar_colision_x(lista_plataformas)
+        
+        if piso._lados["top"].colliderect(self._rectangulo):
+            self._bandera_suelo = True
+            self._velocidad_y = 0
+            self._rectangulo.bottom = piso._rectangulo.top + 3
         else: 
             self._bandera_suelo = False
+        #si colisiona con una piso 
+       
 
             
-        # if self._rectangulo.colliderect(piso._lados["right"]):
-        #     self._velocidad_x = 0
-        #     self._rectangulo.left = piso._rectangulo.right +5
-            
-        # if self._rectangulo.colliderect(piso._lados["bottom"]):
-        #     self._velocidad_y = 0
-        #     self._rectangulo.top = piso._rectangulo.bottom +5
 
         self._lados = self.get_rectangulos()
         
@@ -189,9 +230,7 @@ class Personaje(GameObject):
     def tirar_proyectil(self,pantalla,x):
 
         if self._que_hace.startswith("empujando_"):
-            # animaicon para tirar la moneda
-            # for imagen in self._dict_imagenes[self._que_hace]:
-            #     pantalla.blit(imagen,(self._rectangulo.x,self._rectangulo.y))
+            # self.animacion_especifica(pantalla)
             proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
             proyectil_vin._activo = True
             self._lista_proyectiles.append(proyectil_vin)
@@ -207,3 +246,15 @@ class Personaje(GameObject):
         if self._rectangulo.colliderect(moneda._rectangulo):
             moneda._activo = False
             self._monedas += 1
+        
+    
+    
+    def animacion_especifica(self,pantalla):
+        imagenes_lista = self._dict_imagenes[self._que_hace]
+        largo = len(imagenes_lista)
+        if self._contador//4 >= largo:
+            self._contador = 0
+        animacion = imagenes_lista[self._contador//4]
+        pantalla.blit(animacion,(self._rectangulo.x,self._rectangulo.y))
+        self._contador += 1
+        

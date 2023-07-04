@@ -41,9 +41,7 @@ vin_corriendo_derecha=["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-l
 vin_atacando_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\2.png",
                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\3.png",
                         "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\4.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\5.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\6.png",
-                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\7.png" ]
+                        "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\atacando derecha\\5.png" ]
 
 vin_saltando_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\saltando\\subiendo.png"]
 
@@ -52,25 +50,33 @@ vin_callendo_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1
 
 vin_super_salto_d = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\saltando\\super salto.png"]
 
-vin_muerta = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\PYGAME_MISTBORN\\src\\personajes\\VIN\\muerta\\0.png"]
+
 
 vin_empujando_d =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\proyect derecha\\0.png",
                   "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\proyect derecha\\1.png",
                   "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\proyect derecha\\2.png"]
 
+vin_muriendo = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\0.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\1.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\2.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\3.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\4.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\5.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\6.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\7.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\8.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\9.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\10.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\11.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\12.png",
+           "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\13.png"]
+
+vin_muerta = [r"C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\VIN\\muriendo\\13.png"]
+
 
 lista_proyectil =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\moneda1.png"]
 
-# animacion_moneda_amarilla = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\0.png",
-#                     "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\1.png",
-#                     "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\2.png",
-#                     "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\3.png"
-#                     ]
-# animacion_moneda_roja = ["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\4.png",
-#                          "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\5.png",
-#                          "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\6.png",
-#                          "C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\7.png"
-#                          ]
+          
 
 diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    "quieto_i":vin_quieta_derecha,
@@ -86,7 +92,9 @@ diccionario_vin = {"quieto_d":vin_quieta_derecha,
                    "super_salto_d":vin_super_salto_d,
                    "super_salto_i":vin_super_salto_d,
                    "ataque_d":vin_atacando_d,
-                   "ataque_i":vin_atacando_d                   
+                   "ataque_i":vin_atacando_d,
+                   "muriendo":vin_muriendo,
+                   "muerta":vin_muerta      
 }
 
 
@@ -107,7 +115,10 @@ r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistb
 
 path_enemigos_attack_i = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\8.png"]
 
-diccionario_ogro ={"camina_derecha_i":path_enemigos_i,"camina_izquierda":path_enemigos_i,"ataca_derecha_i":path_enemigos_attack_i,"ataca_izquierda":path_enemigos_attack_i} 
+diccionario_ogro ={"camina_derecha_i":path_enemigos_i,
+                   "camina_izquierda":path_enemigos_i,
+                   "ataca_derecha_i":path_enemigos_attack_i,
+                   "ataca_izquierda":path_enemigos_attack_i} 
 ########## pruebas de imagenes ###########
 #----imagenes----
 # lista_fondos  = cargar_imagenes(lista_fondos,"ff")

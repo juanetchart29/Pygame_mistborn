@@ -7,71 +7,80 @@ from Proyectil import Proyectil
 # -----BANDERAS------
 
 
+
 def actualizar_pantalla(pantalla,fondo:list,un_personaje):
     pantalla.blit(fondo[0],(0,0))
     un_personaje.update(pantalla)
     
-
     
-def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Personaje,piso):
+def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Personaje,piso,lista_plataformas):
     """
     lee las teclas presionadas y asigna una acciona un_personaje._que_hace luego updeate pantalla
     """
-    #si esta en el piso
-    if un_personaje._bandera_suelo:
-        if lista_teclas[pygame.K_SPACE]:
+    if un_personaje._vida > 0:   
+        #si esta en el piso
+        if un_personaje._bandera_suelo:
+            if lista_teclas[pygame.K_d]:   
+                
+                un_personaje._bandera_ataque = True
+            # else:
+            #     un_personaje._bandera_ataque = False
+                
+            if lista_teclas[pygame.K_SPACE]:
+                
+                if un_personaje._bandera_lado == "derecha":
+                    un_personaje._que_hace ="empujando_d"
+        
+                else: 
+                    un_personaje._que_hace = "empujando_i"
             
-            if un_personaje._bandera_lado == "derecha":
-                un_personaje._que_hace ="empujando_d"
-    
-            else: 
-                un_personaje._que_hace = "empujando_i"
-            
-            actualizar_pantalla(pantalla,fondo,un_personaje)
-        if lista_teclas[pygame.K_RIGHT]:
-            un_personaje._bandera_lado = "derecha"
-            un_personaje._velocidad_x = 10
-            un_personaje._que_hace = "corre_d"
-        elif lista_teclas[pygame.K_LEFT]:
-            un_personaje._bandera_lado = "izquierda"
-            un_personaje._velocidad_x = 10
-            un_personaje._que_hace = "corre_i"
-        elif lista_teclas[pygame.K_UP]:
-            if un_personaje._bandera_lado == "izquierda":
-                un_personaje._que_hace = "salta_i"
+            elif lista_teclas[pygame.K_RIGHT]:
+                un_personaje._bandera_lado = "derecha"
+                un_personaje._velocidad_x = 10
+                un_personaje._que_hace = "corre_d"
+            elif lista_teclas[pygame.K_LEFT]:
+                un_personaje._bandera_lado = "izquierda"
+                un_personaje._velocidad_x = 10
+                un_personaje._que_hace = "corre_i"
+            elif lista_teclas[pygame.K_UP]:
+                if un_personaje._bandera_lado == "izquierda":
+                    un_personaje._que_hace = "salta_i"
+                else:
+                    un_personaje._que_hace = "salta_d"
             else:
-                un_personaje._que_hace = "salta_d"
+                if un_personaje._bandera_lado == "derecha":
+                    un_personaje._que_hace = "quieto_d"
+                else:
+                    un_personaje._que_hace = "quieto_i"
+        #si esta en el aire
         else:
-            if un_personaje._bandera_lado == "derecha":
-                un_personaje._que_hace = "quieto_d"
-            else:
-                un_personaje._que_hace = "quieto_i"
-    #si esta en el aire
+            if lista_teclas[pygame.K_RIGHT]:
+                un_personaje._bandera_lado = "derecha"
+                if un_personaje._velocidad_y < 0:
+                    un_personaje._que_hace = "salta_d"
+                elif un_personaje._velocidad_y > 0:
+                    un_personaje._que_hace = "cae_d"
+                    
+                un_personaje._velocidad_x = 10
+                un_personaje.mover_personaje_x(1)
+            elif lista_teclas[pygame.K_LEFT]:
+                un_personaje._bandera_lado = "izquierda"
+                if un_personaje._velocidad_y < 0:
+                    un_personaje._que_hace = "salta_i"
+                elif un_personaje._velocidad_y > 0:
+                    un_personaje._que_hace = "cae_i"
+                    
+                un_personaje._velocidad_x = 10
+                un_personaje.mover_personaje_x(-1)
+
+        #le aplico siempre gravedad      
+        un_personaje.aplicar_gravedad(pantalla,piso,lista_plataformas)
+
+        #actualizo la pantalla para las animaciones del personaje
+        actualizar_pantalla(pantalla,fondo,un_personaje)
     else:
-        if lista_teclas[pygame.K_RIGHT]:
-            un_personaje._bandera_lado = "derecha"
-            if un_personaje._velocidad_y < 0:
-                un_personaje._que_hace = "salta_d"
-            elif un_personaje._velocidad_y > 0:
-                un_personaje._que_hace = "cae_d"
-                
-            un_personaje._velocidad_x = 10
-            un_personaje.mover_personaje_x(1)
-        elif lista_teclas[pygame.K_LEFT]:
-            un_personaje._bandera_lado = "izquierda"
-            if un_personaje._velocidad_y < 0:
-                un_personaje._que_hace = "salta_i"
-            elif un_personaje._velocidad_y > 0:
-                un_personaje._que_hace = "cae_i"
-                
-            un_personaje._velocidad_x = 10
-            un_personaje.mover_personaje_x(-1)
-
-    #le aplico siempre gravedad      
-    un_personaje.aplicar_gravedad(pantalla,piso)
-
-    #actualizo la pantalla para las animaciones del personaje
-    actualizar_pantalla(pantalla,fondo,un_personaje)
+        un_personaje._que_hace = "muriendo"
+        un_personaje.animacion_especifica(pantalla)
 
     
 def pisando_plataforma(lista_plataformas:list,un_personaje:Personaje,ultimo_pisado):
@@ -99,7 +108,9 @@ def monedas(pantalla,lista_monedas,un_personaje:Personaje):
             if moneda._rectangulo.colliderect(un_personaje._rectangulo):
                 un_personaje.agarrar_moneda(moneda)
 
-    
+def ogros(pantalla,lista_ogros,un_personaje:Personaje):
+    for ogro in lista_ogros:
+        ogro.accion_enemigo(un_personaje,pantalla)
     
 
 # def blitear_proyectil(proyectil:Proyectil,pantalla):

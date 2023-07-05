@@ -41,8 +41,7 @@ class Personaje(GameObject):
         self._potencia_super_salto = -20
     #PROYECTILES 
         self._lista_proyectiles = []
-        self._call_down = True
-     
+        self._cool_down = True
     #USUARIO
         self._contador = 0
         self._nombre = nombre 
@@ -53,8 +52,15 @@ class Personaje(GameObject):
     #BANDERAS
         self._con_vida = True
         self._bandera_ataque = False
+        
+        self._bandera_super_salto = True
     #TAMAÑO ATAQUE 
         self._tamaño_ataque = (100,90)
+    #TICK 
+        self._cool_down = 2000 #milisegundos
+        self._timer = pygame.time.get_ticks()
+        self._time_now = pygame.time.get_ticks()
+    
 
 #---imagenes
     #cargo las imagenes de las listas de los diccionarios y las escalo.
@@ -94,6 +100,7 @@ class Personaje(GameObject):
         match self._que_hace:
             case "corre_d":
                 self.mover_personaje_x(1)
+                
             case "corre_i":
                 self.mover_personaje_x(-1)
             case "salta_i":
@@ -101,14 +108,15 @@ class Personaje(GameObject):
                     self._velocidad_y= self._potencia_salto
                 self._bandera_suelo = False
             case "salta_d":
-                if self._bandera_suelo:
+                if self._bandera_suelo :
                     self._velocidad_y= self._potencia_salto
                 self._bandera_suelo = False
             case "empujando_d":
                 self.tirar_proyectil(pantalla,1)
             case "empujando_i":
                 self.tirar_proyectil(pantalla,-1)
-    
+                
+        self.verificar_colision_x(lista_plataformas)
         self.atacar(pantalla,lista_enemigos)
         self.ataque_proyectil(pantalla,lista_enemigos,lista_plataformas)
         
@@ -128,21 +136,32 @@ class Personaje(GameObject):
             
     def verificar_colision_x(self,lista_plataformas:list):
         for plataforma in lista_plataformas:
-            if plataforma._lados["right"].colliderect(self._lados["left"]) and self._bandera_lado =="izquierda" :
-                self._velocidad_x = 0
+        
+            if plataforma._lados["right"].colliderect(self._lados["left"]) and self._bandera_lado =="izquierda"  :
+                self._rectangulo.left = plataforma._rectangulo.right
+                if not plataforma._lados["top"].colliderect(self._rectangulo):
+                
+                    print("ss")     
+                    self._velocidad_x = 0
+
             if plataforma._lados["left"].colliderect(self._lados["right"]) and self._bandera_lado == "derecha":
-                self._velocidad_x = 0
-            if plataforma._lados["bottom"].colliderect(self._lados["top"]):
-                self._rectangulo.top = plataforma._rectangulo.bottom +1
-                self._velocidad_y = -1
-          
+                if not plataforma._rectangulo.bottom == self._rectangulo.bottom:
+                    self._velocidad_x = 0
+                self._rectangulo.right = plataforma._rectangulo.left
+
+                
+            
+            
+                
+                
+                
+     
  
     #APLICO GRAVEDAD
     def aplicar_gravedad(self,pantalla,piso:Plataforma,lista_plataformas):  
         #si esta en el aire
         
-        if (self._bandera_suelo == False):
-            self.verificar_colision_x(lista_plataformas)
+        if (self._bandera_suelo == False) :
             if self._velocidad_y < 0 :
                 if self._bandera_lado == "derecha":
                     self._que_hace = "salta_d" 
@@ -168,7 +187,9 @@ class Personaje(GameObject):
              
             if self._velocidad_y + self._aceleracion < -(self._potencia_salto):
                 self._velocidad_y += self._aceleracion 
-        
+        else: 
+            self._bandera_super_salto = True
+            
         
         self.verificar_colision_x(lista_plataformas)
         
@@ -178,6 +199,10 @@ class Personaje(GameObject):
             self._rectangulo.bottom = piso._rectangulo.top + 3
         else: 
             self._bandera_suelo = False
+            for plataforma in lista_plataformas:
+                if plataforma._lados["bottom"].colliderect(self._rectangulo):
+                    self._rectangulo.y = plataforma._rectangulo.bottom +1
+                    self._velocidad_y = -1
         #si colisiona con una piso 
        
 
@@ -188,22 +213,23 @@ class Personaje(GameObject):
         
     #ver como hacer para que haga la animacion 
     def tirar_proyectil(self,pantalla,x):
-                 
-        if self._que_hace.startswith("empujando_")  :
-                # self.animacion_especifica(pantalla)
-            if self._call_down == True:
-                proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
-                proyectil_vin._activo = True
-                self._lista_proyectiles.append(proyectil_vin)
-        else: 
-            self._call_down = False
+  
+        if self._time_now-self._timer  >= self._cool_down:
+            print("hola")
+            proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
+            proyectil_vin._activo = True
+            self._lista_proyectiles.append(proyectil_vin)
+            self._timer = self._time_now
+        # self._cool_down = False
         
     def blitear_proyectiles(self,pantalla):
+       
         self._lista_proyectiles = [proyectil for proyectil in self._lista_proyectiles if proyectil._activo]
         for proyectil in self._lista_proyectiles:
             proyectil.lanzar_proyectil()
             pantalla.blit(proyectil._imagen, (proyectil._rectangulo.x, proyectil._rectangulo.y))
-            
+        
+        
     def ataque_proyectil(self,pantalla,lista_enemigos,lista_plataformas):
     
         self.blitear_proyectiles(pantalla)

@@ -77,26 +77,10 @@ vin_muerta = [r"C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\M
 
 lista_proyectil =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\moneda1.png"]
 
-diccionario_vin = {"quieto_d":vin_quieta_derecha,
-                   "quieto_i":vin_quieta_derecha,
-                   "corre_d":vin_corriendo_derecha,
-                   "corre_i":vin_corriendo_derecha,
-                   "salta_d":vin_saltando_d,
-                   "salta_i":vin_saltando_d,
-                   "suspendido":vin_en_el_aire,
-                   "cae_d":vin_callendo_d,
-                   "cae_i":vin_callendo_d,
-                   "empujando_d":vin_empujando_d,
-                   "empujando_i":vin_empujando_d,
-                   "super_salto_d":vin_super_salto_d,
-                   "super_salto_i":vin_super_salto_d,
-                   "ataque_d":vin_atacando_d,
-                   "ataque_i":vin_atacando_d,
-                   "muriendo":vin_muriendo,
-                   "muerta":vin_muerta      
-}
+
 
 lista_viga1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\vigas\plataforma piedra.png"]
+lista_viga2 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\vigas\6 (2).png"]
 
 lista_plataforma1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\\PYGAME_MISTBORN\src\plataformas\plataforma piedra.png"] 
 # diccionario_vin = definir_imagenes_dict(diccionario_vin)
@@ -116,10 +100,43 @@ r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistb
 
 path_enemigos_attack_i = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\8.png"]
 
+path_arquero_quieto = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\ARQUEROS\4.png"]
+
+path_arquero_dispara = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\ARQUEROS\3.png",
+                        r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\ARQUEROS\0.png",
+                        r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\ARQUEROS\1.png",
+                        r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\ARQUEROS\2.png"]
+path_flecha = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\ARQUEROS\6.png"]
+path_arquero_muere = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\ARQUEROS\5.png"]
+diccionario_vin = {"quieto_d":vin_quieta_derecha,
+                   "quieto_i":vin_quieta_derecha,
+                   "corre_d":vin_corriendo_derecha,
+                   "corre_i":vin_corriendo_derecha,
+                   "salta_d":vin_saltando_d,
+                   "salta_i":vin_saltando_d,
+                   "suspendido":vin_en_el_aire,
+                   "cae_d":vin_callendo_d,
+                   "cae_i":vin_callendo_d,
+                   "empujando_d":vin_empujando_d,
+                   "empujando_i":vin_empujando_d,
+                   "super_salto_d":vin_super_salto_d,
+                   "super_salto_i":vin_super_salto_d,
+                   "ataque_d":vin_atacando_d,
+                   "ataque_i":vin_atacando_d,
+                   "muriendo":vin_muriendo,
+                   "muerta":vin_muerta      }
+
 diccionario_ogro ={"camina_derecha_i":path_enemigos_i,
                    "camina_izquierda":path_enemigos_i,
                    "ataca_derecha_i":path_enemigos_attack_i,
                    "ataca_izquierda":path_enemigos_attack_i} 
+
+diccionario_arquero = {"quieto" : path_arquero_quieto,
+                       "dispara":path_arquero_dispara,
+                       "flecha": path_flecha,
+                        "muere":path_arquero_muere
+
+                                        }
 
 
 ########## pruebas de imagenes ###########

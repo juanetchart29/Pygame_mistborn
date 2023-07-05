@@ -18,10 +18,22 @@ class Enemigo(GameObject):
         self._rectangulo = self._imagen.get_rect()
         self._rectangulo.x = self._posicion[0]
         self._rectangulo.y = self._posicion[1]
+        self._lados = self.get_rectangulos()
+        
         
 
         
         self._contador =0
+        
+    def animar_enemigo(self,pantalla):
+    
+        imagenes_lista = self._dict_imagenes[self._que_hace]
+        largo = len(imagenes_lista)
+        if self._contador/4 >= largo:
+            self._contador = 0
+        animacion = imagenes_lista[self._contador//4]
+        pantalla.blit(animacion,(self._rectangulo.x,self._rectangulo.y))
+        self._contador += 1
 
     
     

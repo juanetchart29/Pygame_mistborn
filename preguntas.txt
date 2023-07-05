@@ -1,36 +1,23 @@
--Main linea 51: si esta bien definido porqeu cuando arranca no esta colisionando
--cuando salto como 10 veces no coliciona y se cae
-_en la clase  GameObject puedo eliminar las propiedades de la lista para que esten en la herencia ?
-_como hago para que mis funciones detecten las demas plataformas
 
 cosas por arreglar:
-    ver el video de german para ver porque se me cae si salto much
-
-    cuando salto desde  alto y voy hasta la esquina derecha se cae---> CUANDO SUPERA LA ALTURA MAXIMA, TENER EN CUENTA LA ALTURA Y TAMAÑO DE PANTALLA 
-
-
+ 
 CORREGIR: 
-PLATAFORMAS: que cuando el rectangulo.bottom sea igual al rectangulo.top no pase lo de la velocidad
-CUANDO APRETO PARA EMPUJAR LA MONEDA QUE HAGA LA ANIMACION 
-QUE NO SE ENVIEN 3 MONEDAS, ANTIGHOSTING, usando una bandera para  controlar que ya no se apreta el espacio
-ahora que ya se hacer que anime el personaje antres de tirar la moneda, controlar la animacion ocn una BANDERAS
-corregir la animacion de muerte de vin para que no vuelva a reproducirse
-corregir los lados de los GameObject para que no se pegue a la plataforma
+
+
+
+corregir la animacion de muerte de vin para que no vuelva a reproducirse-> corregir con api
+
 
 
 TENER EN CUENTA:
-se reproducen en loop las animaicones en self.animar
-hacer funcion para animar mas lento animaciones especificas ver como cambiar de animaicon normal a especifica
+
+
 
 POR HACER:
-SUPER salto
-
----preguntar a ivo como y donde poner la bandera para los PROYECTILES
---- bandera para el super salto(doble salto)
 
 
-preguntar cuando esta saltando si colisiona 
-humo cuanndo se mueren repo franco
+
+humo cuanndo se mueren ---> repo (BANDERA SI LA VIDA LLEGA A 0 EN VEZ DE DESAPARECERLO)
 
 
 

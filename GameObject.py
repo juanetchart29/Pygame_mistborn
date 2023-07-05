@@ -21,6 +21,7 @@ class GameObject :
         diccionario["bottom"] = pygame.Rect(principal.left,principal.bottom -6,principal.width,6)
         diccionario["right"] = pygame.Rect(principal.right -5,principal.top,16,principal.height)
         diccionario["left"] = pygame.Rect(principal.left,principal.top,6,principal.height)
+       
         diccionario["top"] = pygame.Rect(principal.left,principal.top ,principal.width,10)#no tocar
         return diccionario
 

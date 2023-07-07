@@ -12,12 +12,18 @@ corregir la animacion de muerte de vin para que no vuelva a reproducirse-> corre
 TENER EN CUENTA:
 
 
+7/7:
+terminar arqueros
+acomodar la plataforma de arriba
+corregir que alugnos ogros vayan para la derecha 
+limitar el numero de ogros que aparecen
+poner la moneeda roja en un lugar estrategico 
+
+
 
 POR HACER:
-
-
-
 humo cuanndo se mueren ---> repo (BANDERA SI LA VIDA LLEGA A 0 EN VEZ DE DESAPARECERLO)
+arreglar que cuando caen los ogros de la derecha se vean del ultimo lado que estaban antes
 
 
 

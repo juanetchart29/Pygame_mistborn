@@ -4,7 +4,8 @@ from PersonajePrincipal import  *
 from imagenes import *
 from Proyectil import Proyectil
 from Ogros import Ogros
-
+from Arquero import Arquero
+from settings import *
 from random import randint
 # -----BANDERAS------
 bandera_tiempo = pygame.time.get_ticks()
@@ -119,24 +120,38 @@ def monedas(pantalla,lista_monedas,un_personaje:Personaje):
             if moneda._rectangulo.colliderect(un_personaje._rectangulo):
                 un_personaje.agarrar_moneda(moneda)
 
-def ogros(pantalla,lista_ogros,un_personaje:Personaje,lista_plataformas):
-    for ogro in lista_ogros:
-        if ogro._vida > 0:
-            ogro.accion_enemigo(un_personaje,pantalla,lista_plataformas)
+def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas):
+    lista_enemigos_vivos = filtrar_ogros_vivos(lista_enemigos)        
+    for enemigo in lista_enemigos:
+        if enemigo._vida > 0:
+            if type(enemigo) == Ogros:
+                enemigo.accion_enemigo(un_personaje,pantalla,lista_plataformas)
+            elif type(enemigo) == Arquero:
+                enemigo.accion_enemigo(pantalla,un_personaje,lista_enemigos_vivos)    
             # print(ogro._vida)
+        elif  type(enemigo)== Arquero:
+                enemigo.arquero_muerto(pantalla,un_personaje,lista_enemigos_vivos)
+            
             
 #   ogro3 = Ogros((100,100),(100,50),diccionario_ogro,150,5,"ida")          
-def dropear_ogros(lista_ogros:list):
+def dropear_ogros(lista_enemigos:list):
     global bandera_tiempo
     tiempo_ahora = pygame.time.get_ticks()
-    if tiempo_ahora - bandera_tiempo > cool_down:
+    lista_ogros_vivos = filtrar_ogros_vivos(lista_enemigos)
+
+            
+    if tiempo_ahora - bandera_tiempo > cool_down and len(lista_ogros_vivos)<3:
         print("PASO EL TIEMPO ")
         bandera_tiempo = tiempo_ahora
-        nuevo_ogro = Ogros((randint(50,100),randint(50,100)),(randint(50,700),50),diccionario_ogro,2,randint(1,4),"ida")
-        lista_ogros.append(nuevo_ogro)
-    return lista_ogros
-# def blitear_proyectil(proyectil:Proyectil,pantalla):
-#     if type(proyectil) == Proyectil :
-#         if proyectil._activo ==  True:
-#             pantalla.blit(proyectil._imagen,(proyectil._rectangulo.x,proyectil._rectangulo.y))
-#             proyectil.desaparecer()
+        nuevo_ogro1 = Ogros((randint(50,120),randint(50,120)),(150,50),diccionario_ogro,2,3,"ida")
+        nuevo_ogro2 = Ogros((randint(50,120),randint(50,120)),(W-150,50),diccionario_ogro,2,3,"vuelta")
+        lista_enemigos.append(nuevo_ogro1)
+        lista_enemigos.append(nuevo_ogro2)
+    return lista_enemigos
+
+def filtrar_ogros_vivos(lista_enemigos:list):
+    lista_ogros_vivos = []
+    for enemigo in lista_enemigos :
+        if type(enemigo) == Ogros and enemigo._vida > 0:
+            lista_ogros_vivos.append(enemigo)
+    return lista_ogros_vivos

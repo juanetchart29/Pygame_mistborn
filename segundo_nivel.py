@@ -6,6 +6,7 @@ from ModoDesarrollador import *
 from Personaje import *
 from Plataforma import Plataforma
 from Ogros import Ogros
+from Arquero import Arquero
 
 
 pygame.init()
@@ -29,21 +30,25 @@ vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN"
 #ogros 
 
 ogro3 = Ogros((100,100),(100,50),diccionario_ogro,150,5,"ida")
-
-lista_enemigos = [ogro3]
+arquero1 = Arquero((100,100),(1368, 421),diccionario_arquero,path_flecha)
+arquero2= Arquero((100,100),(1368, 220),diccionario_arquero,path_flecha) 
+lista_enemigos = [ogro3,arquero1,arquero2]
 
 
 #COINS
+
 coin_1 = Coin((30,30),(400,500),path_monedas,20,False)
 
-coin_2= Coin((30,30),(150,550),path_monedas,20,False)
-coin_3= Coin((30,30),(163, 666),path_monedas,20,False)
-coin_4= Coin((30,30),(258, 666),path_monedas,20,False)
-coin_5= Coin((30,30),(633, 335),path_monedas,20,False)
-coin_6= Coin((30,30),(700, 390),path_monedas,20,False)
+
+coin_1 = Coin((30,30),(604, 680),path_monedas,20,False)
+coin_2= Coin((30,30),(603, 574),path_monedas,20,False)
+coin_3= Coin((30,30),(67, 549),path_monedas,20,False)
+coin_4= Coin((30,30),(279, 445),path_monedas,20,False)
+coin_5= Coin((30,30),(377, 240),path_monedas,20,False)
+coin_6= Coin((30,30),(1405, 655),path_monedas,20,False)
 coin_7= Coin((30,30),(1444, 455),path_monedas,20,False)
 coin_8= Coin((30,30),(740, 450),path_monedas,20,False)
-coin_9= Coin((30,30),(900,H-200),path_monedas,20,False)
+coin_9= Coin((40,40),(720,H-160),path_moneda_roja,20,True)
 
 # coin_10= Coin((30,30),(193, 149),path_moneda_roja,20,True) ,coin_10
 lista_monedas = [coin_1,coin_2,coin_3,coin_4,coin_5,coin_6,coin_7,coin_8,coin_9]
@@ -54,8 +59,8 @@ piso = Plataforma((W,20),(0,715),lista_plataforma1)
 
 #PLATAFORMAS
 plataforma1 = Plataforma((100,30),(0,600),lista_plataforma2)
-plataforma2 = Plataforma((700,30),(311,300),lista_plataforma2)
-plataforma3 = Plataforma((700,30),(0,150) ,lista_plataforma2)
+plataforma2 = Plataforma((650,30),(350,300),lista_plataforma2)
+plataforma3 = Plataforma((420,30),(0,150) ,lista_plataforma2)
 plataforma5 = Plataforma((950,30),(208, 497),lista_plataforma2)
 plataforma6 = Plataforma((250,30),(1350,300),lista_plataforma2)
 plataforma9 = Plataforma((250,30),(1350,500),lista_plataforma2)
@@ -63,11 +68,15 @@ plataforma9 = Plataforma((250,30),(1350,500),lista_plataforma2)
 plataforma4 = Plataforma((W,30),(0,H-30),lista_plataforma2)
 plataforma7 = Plataforma((30,H),(0,0),lista_viga2)
 plataforma10 = Plataforma((30,H),(W-30,0),lista_viga2)
+plataforma11 = Plataforma((150,30),(639, 150),lista_plataforma2)
+plataforma12 = Plataforma((700,30),(1035, 150),lista_plataforma2)
 
+plataforma13 = Plataforma((30,160),(639, 0),lista_viga2)
 plataforma8 = Plataforma((30,W-524),(646, 524),lista_viga2)
 
 
-lista_pisos = [piso,plataforma1,plataforma2,plataforma3,plataforma4,plataforma5,plataforma6,plataforma7,plataforma8,plataforma9,plataforma10]
+lista_pisos = [piso,plataforma1,plataforma2,plataforma3,plataforma4,plataforma5,plataforma6,plataforma7,plataforma8,plataforma9,plataforma10,plataforma11,plataforma12,plataforma13]
+
 
 flag = True
 while flag:
@@ -84,6 +93,7 @@ while flag:
             click_position = pygame.mouse.get_pos()
             print("Posición del clic:", click_position)
     lista_enemigos = dropear_ogros(lista_enemigos)
+    
     if get_modo()==True:
         for lado in piso._lados:
             pygame.draw.rect(PANTALLA,"Blue",piso._lados[lado],1)
@@ -99,11 +109,6 @@ while flag:
             print("TODAVIAN NO SE HA ESTABLECIDO EL RECTANGULO DEL ATAQUE, ATACA PARA PONER EL MODO DESARROLLADOR")
         
 
-        #     if proyectil._activo == True:
-        #         pygame.draw.rect(PANTALLA,"red",proyectil._rectangulo)
-        
-    
-
     lista_teclas = pygame.key.get_pressed()
     esta_pisando = piso
     esta_pisando = pisando_plataforma(lista_pisos,vin,piso)
@@ -111,58 +116,22 @@ while flag:
     if vin._con_vida : 
         acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_2,vin,esta_pisando,lista_pisos,lista_enemigos)
         monedas(PANTALLA,lista_monedas,vin)
-        ogros(PANTALLA,lista_enemigos,vin,lista_pisos)
+        enemigos(PANTALLA,lista_enemigos,vin,lista_pisos)
     else: 
         PANTALLA.blit(vin._dict_imagenes["muerta"],(vin._rectangulo.center))
+    
     blitear_pisos(lista_pisos,PANTALLA)
     
-    
-    for piso in lista_pisos:
-        for lado in piso._lados:
-            pygame.draw.rect(PANTALLA,"yellow",piso._lados[lado],1)
-    
-    for lado in ogro3._lados:
-        pygame.draw.rect(PANTALLA,"red",ogro3._lados[lado],1)
-        
-    # lista_teclas = pygame.key.get_pressed()
-            
-    # esta_pisando = piso
-    # esta_pisando = pisando_plataforma(lista_plataforma1,vin,piso)
-    # if vin._con_vida :
-        
-    #     acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_1,vin,esta_pisando,lista_plataforma1,lista_ogros)
-    #     monedas(PANTALLA,lista_monedas,vin)
-    #     ogros(PANTALLA,lista_ogros,vin)
-    # else: 
-    #     PANTALLA.blit(vin._dict_imagenes["muerta"],(vin._rectangulo.center))
-    #     RELOJ.tick(FPS)
-        
-          
-                
-    # blitear_pisos(lista_plataforma1,PANTALLA)   
-    # if get_modo()==True:
+    for lado in vin._lados:
+        pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
+    # for piso in lista_pisos:
     #     for lado in piso._lados:
-    #         pygame.draw.rect(PANTALLA,"Blue",piso._lados[lado],1)
-    #     for lado in vin._lados:
-    #         pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
-    #         # if lado == "right":
-    #         #     pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1) 
-    #     try:
-    #         pygame.draw.rect(PANTALLA,"yellow",vin._rectangulo_ataque,1)
-    #     except :
-    #         print("TODAVIAN NO SE HA ESTABLECIDO EL RECTANGULO DEL ATAQUE, ATACA PARA PONER EL MODO DESARROLLADOR")
-    #     for lado in plataforma1._lados:
-    #         pygame.draw.rect(PANTALLA,"blue",plataforma1._lados[lado],1)  
-    #     for lado in plataforma2._lados:
-    #         pygame.draw.rect(PANTALLA,"red",plataforma2._lados[lado],1)
-    #     for lado in plataforma3._lados:
-    #         pygame.draw.rect(PANTALLA,"orange",plataforma3._lados[lado],1)
-    #     for lado in plataforma4._lados:
-    #         pygame.draw.rect(PANTALLA,"white",plataforma4._lados[lado],1)
-    #     for proyectil in vin._lista_proyectiles:
-    #         if proyectil._activo == True:
-    #             pygame.draw.rect(PANTALLA,"red",proyectil._rectangulo)
+    #         pygame.draw.rect(PANTALLA,"yellow",piso._lados[lado],1)
+    
+    # for lado in ogro3._lados:
+    #     pygame.draw.rect(PANTALLA,"red",ogro3._lados[lado],1)
         
+    
     
         
   

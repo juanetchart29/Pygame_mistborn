@@ -121,7 +121,7 @@ while flag:
         
         acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_1,vin,esta_pisando,lista_plataforma1,lista_ogros)
         monedas(PANTALLA,lista_monedas,vin)
-        ogros(PANTALLA,lista_ogros,vin,lista_plataforma1)
+        enemigos(PANTALLA,lista_ogros,vin,lista_plataforma1)
     else: 
         PANTALLA.blit(vin._dict_imagenes["muerta"],(vin._rectangulo.center))
         RELOJ.tick(FPS)

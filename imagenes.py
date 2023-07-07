@@ -133,10 +133,10 @@ diccionario_ogro ={"camina_derecha_i":path_enemigos_i,
 
 diccionario_arquero = {"quieto" : path_arquero_quieto,
                        "dispara":path_arquero_dispara,
-                       "flecha": path_flecha,
                         "muere":path_arquero_muere
-
                                         }
+                       
+
 
 
 ########## pruebas de imagenes ###########

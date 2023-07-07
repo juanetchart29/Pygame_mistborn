@@ -112,9 +112,9 @@ class Personaje(GameObject):
                     self._velocidad_y= self._potencia_salto
                 self._bandera_suelo = False
             case "empujando_d":
-                self.tirar_proyectil(pantalla,1)
+                self.tirar_proyectil(1)
             case "empujando_i":
-                self.tirar_proyectil(pantalla,-1)
+                self.tirar_proyectil(-1)
                 
         self.verificar_colision_x(lista_plataformas)
         self.atacar(pantalla,lista_enemigos)
@@ -141,7 +141,6 @@ class Personaje(GameObject):
                 self._rectangulo.left = plataforma._rectangulo.right
                 if not plataforma._lados["top"].colliderect(self._rectangulo):
                 
-                    print("ss")     
                     self._velocidad_x = 0
 
             if plataforma._lados["left"].colliderect(self._lados["right"]) and self._bandera_lado == "derecha":
@@ -212,15 +211,14 @@ class Personaje(GameObject):
         
         
     #ver como hacer para que haga la animacion 
-    def tirar_proyectil(self,pantalla,x):
+    def tirar_proyectil(self,x):
   
         if self._time_now-self._timer  >= self._cool_down:
-            print("hola")
+            
             proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
             proyectil_vin._activo = True
             self._lista_proyectiles.append(proyectil_vin)
             self._timer = self._time_now
-        # self._cool_down = False
         
     def blitear_proyectiles(self,pantalla):
        
@@ -273,7 +271,7 @@ class Personaje(GameObject):
         for moneda in self._lista_proyectiles:
             for enemigo in lista_enemigos:                
                 if enemigo._rectangulo.colliderect(moneda._rectangulo) and enemigo._vida > 0:
-                    enemigo._vida -= 20
+                    enemigo._vida -= 100
                     moneda._activo = False
     def chocar_proyectil_plataforma(self,lista_plataforma):
         for moneda in self._lista_proyectiles:

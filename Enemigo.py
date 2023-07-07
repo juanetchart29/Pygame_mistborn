@@ -6,6 +6,7 @@ class Enemigo(GameObject):
     def __init__(self, tamaño: tuple, posicion: tuple,diccionario_imagenes:dict) -> None:
         super().__init__(tamaño, posicion)
         
+        self._vida = 100
         
         self._dict_path = diccionario_imagenes
         try :

@@ -7,19 +7,27 @@ CORREGIR:
 
 corregir la animacion de muerte de vin para que no vuelva a reproducirse-> corregir con api
 
+agregarle:
+que cuando golpea con la espada una flecha que la flecha desaparezca
+agregarle una trampa par ayudar a controolar las oleadas de ogros en el lvl 2 y ponerla en el lvl 1 tambien
 
 
 TENER EN CUENTA:
 
 
-7/7:
-terminar arqueros
-acomodar la plataforma de arriba
-corregir que alugnos ogros vayan para la derecha 
-limitar el numero de ogros que aparecen
-poner la moneeda roja en un lugar estrategico 
+ARREGLAR:
+los ogros en el tercer nivel no tocan el piso que deberiann
+cuando mueren que suelten monedas,los ogro
+corregir que los ogros cuando caen no se de vuelta la animacio
+corregir que algunos ogros van hacia la la plataforma de abajo por decirlo asi
 
 
+corregir 10/7:
+corregir el patron de movimiento
+agregarle el ataque hacia arriba a vin
+
+
+3er y ultimo nivel
 
 POR HACER:
 humo cuanndo se mueren ---> repo (BANDERA SI LA VIDA LLEGA A 0 EN VEZ DE DESAPARECERLO)

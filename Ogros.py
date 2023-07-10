@@ -105,6 +105,7 @@ class Ogros(Enemigo):
                     self._rectangulo.right = plataforma._rectangulo.left
                     self._velocidad *= -1
                 
+                
         
 
         

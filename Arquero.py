@@ -20,8 +20,6 @@ class Arquero(Enemigo):
     
         
     def accion_enemigo(self,pantalla,un_personaje,lista_enemigos):
-        
-        
         self.puede_disparar(un_personaje)
         self.animar_arquero(pantalla)
         self.lanzar_flecha()
@@ -54,7 +52,6 @@ class Arquero(Enemigo):
        
         self._lista_proyectiles = [proyectil for proyectil in self._lista_proyectiles if proyectil._activo]
         for proyectil in self._lista_proyectiles:
-            
             proyectil.lanzar_proyectil()
             pantalla.blit(proyectil._imagen, (proyectil._rectangulo.x, proyectil._rectangulo.y))
             

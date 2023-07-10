@@ -23,12 +23,15 @@ class Proyectil(GameObject):
         self._direccion = direccion
         #lo lanzo para x positivo o x negativo
     def lanzar_proyectil(self):
-
-        
-        if self._direccion == 1:
+        if self._direccion == -2:
+            self._rectangulo.y += self._potencia
+        elif self._direccion == 2:
+            self._rectangulo.y -= self._potencia
+        elif self._direccion == 1:
             self._rectangulo.x += self._potencia
-        else :
+        elif self._direccion == -1:
             self._rectangulo.x -= self._potencia
+        
             
 
     

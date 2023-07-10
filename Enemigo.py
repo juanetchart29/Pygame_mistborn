@@ -13,6 +13,7 @@ class Enemigo(GameObject):
             self._dict_imagenes = self.convertir_imagenes_diccioario()
         except:
             self._dict_imagenes = self._dict_path
+            
         self.lista_imagen_inicial = next(iter(self._dict_imagenes.values()))
         self._imagen = self.lista_imagen_inicial[0]
         
@@ -35,6 +36,8 @@ class Enemigo(GameObject):
         animacion = imagenes_lista[self._contador//4]
         pantalla.blit(animacion,(self._rectangulo.x,self._rectangulo.y))
         self._contador += 1
+        
+    
 
     
     

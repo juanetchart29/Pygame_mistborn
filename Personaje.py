@@ -57,7 +57,7 @@ class Personaje(GameObject):
     #TAMAÑO ATAQUE 
         self._tamaño_ataque = (100,90)
     #TICK 
-        self._cool_down = 2000 #milisegundos
+        self._cool_down = 1200 #milisegundos
         self._timer = pygame.time.get_ticks()
         self._time_now = pygame.time.get_ticks()
     
@@ -68,7 +68,11 @@ class Personaje(GameObject):
         for keys,value in self._dict_path.items():
             nueva_lista_imagenes = []
             for ruta_imagen in value: 
-                imagen_cargada = pygame.image.load(ruta_imagen)
+                print(type(ruta_imagen))
+                try:
+                    imagen_cargada = pygame.image.load(ruta_imagen)
+                except:
+                    imagen_cargada = ruta_imagen    
                 imagen_cargada = pygame.transform.scale(imagen_cargada,self._tamaño)
                 #si la clave del diccionario termina con _i rota la imagen 
                 if keys.endswith("_i"):
@@ -116,6 +120,11 @@ class Personaje(GameObject):
             case "empujando_i":
                 self.tirar_proyectil(-1)
                 
+            case "empujando_a_d":
+                self.tirar_proyectil(2)
+            case "empujando_a_i":
+                self.tirar_proyectil(2)
+                           
         self.verificar_colision_x(lista_plataformas)
         self.atacar(pantalla,lista_enemigos)
         self.ataque_proyectil(pantalla,lista_enemigos,lista_plataformas)
@@ -212,14 +221,15 @@ class Personaje(GameObject):
         
     #ver como hacer para que haga la animacion 
     def tirar_proyectil(self,x):
-  
-        if self._time_now-self._timer  >= self._cool_down:
-            
-            proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
-            proyectil_vin._activo = True
-            self._lista_proyectiles.append(proyectil_vin)
-            self._timer = self._time_now
-        
+        if self._monedas > 0:
+            self._time_now = pygame.time.get_ticks()
+            if self._time_now-self._timer  >= self._cool_down:
+                print("se crea el proyectil")
+                proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
+                proyectil_vin._activo = True
+                self._lista_proyectiles.append(proyectil_vin)
+                self._timer = self._time_now
+                self._monedas -= 1
     def blitear_proyectiles(self,pantalla):
        
         self._lista_proyectiles = [proyectil for proyectil in self._lista_proyectiles if proyectil._activo]

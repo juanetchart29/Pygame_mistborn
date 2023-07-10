@@ -7,6 +7,7 @@ from Ogros import Ogros
 from Arquero import Arquero
 from settings import *
 from random import randint
+from Boos import Boos
 # -----BANDERAS------
 bandera_tiempo = pygame.time.get_ticks()
 cool_down = 7000 #milis
@@ -30,7 +31,6 @@ def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Person
 
                 un_personaje._bandera_ataque = True
             if lista_teclas[pygame.K_a]:
-                un_personaje._time_now = pygame.time.get_ticks()
                 if un_personaje._bandera_lado == "derecha":
                     un_personaje._que_hace ="empujando_d"
                     
@@ -51,14 +51,23 @@ def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Person
                     un_personaje._que_hace = "salta_i"
                 else:
                     un_personaje._que_hace = "salta_d"
+            elif lista_teclas[pygame.K_f]:
+                if un_personaje._bandera_lado == "izquierda":
+                    un_personaje._que_hace = "empujando_a_i"
+                else:
+                    un_personaje._que_hace = "empujando_a_d"
+            
+            
             else:
                 if un_personaje._bandera_lado == "derecha":
                     un_personaje._que_hace = "quieto_d"
                 else:
                     un_personaje._que_hace = "quieto_i"
+            
         #si esta en el aire
         else:
             if lista_teclas[pygame.K_RIGHT]:
+                
                 un_personaje._bandera_lado = "derecha"
                 if un_personaje._velocidad_y < 0:
                     un_personaje._que_hace = "salta_d"
@@ -84,7 +93,8 @@ def acciones_personaje(lista_teclas:list,pantalla,fondo:list,un_personaje:Person
                     else:
                         un_personaje._que_hace = "super_salto_i"
                     un_personaje._velocidad_y  = un_personaje._potencia_super_salto
-                    un_personaje._bandera_super_salto = False    
+                    un_personaje._bandera_super_salto = False 
+               
         #le aplico siempre gravedad      
         un_personaje.aplicar_gravedad(pantalla,piso,lista_plataformas)
 
@@ -128,13 +138,15 @@ def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas):
                 enemigo.accion_enemigo(un_personaje,pantalla,lista_plataformas)
             elif type(enemigo) == Arquero:
                 enemigo.accion_enemigo(pantalla,un_personaje,lista_enemigos_vivos)    
+            elif type(enemigo) == Boos:
+                    enemigo.accion_enemigo(pantalla,lista_plataformas,lista_enemigos,un_personaje)
             # print(ogro._vida)
         elif  type(enemigo)== Arquero:
                 enemigo.arquero_muerto(pantalla,un_personaje,lista_enemigos_vivos)
             
             
 #   ogro3 = Ogros((100,100),(100,50),diccionario_ogro,150,5,"ida")          
-def dropear_ogros(lista_enemigos:list):
+def dropear_ogros(lista_enemigos:list,primer_ogro_posic:tuple,segundo_ogro_posic:tuple):
     global bandera_tiempo
     tiempo_ahora = pygame.time.get_ticks()
     lista_ogros_vivos = filtrar_ogros_vivos(lista_enemigos)
@@ -143,8 +155,8 @@ def dropear_ogros(lista_enemigos:list):
     if tiempo_ahora - bandera_tiempo > cool_down and len(lista_ogros_vivos)<3:
         print("PASO EL TIEMPO ")
         bandera_tiempo = tiempo_ahora
-        nuevo_ogro1 = Ogros((randint(50,120),randint(50,120)),(150,50),diccionario_ogro,2,3,"ida")
-        nuevo_ogro2 = Ogros((randint(50,120),randint(50,120)),(W-150,50),diccionario_ogro,2,3,"vuelta")
+        nuevo_ogro1 = Ogros((randint(50,120),randint(50,120)),primer_ogro_posic,diccionario_ogro,2,3,"ida")
+        nuevo_ogro2 = Ogros((randint(50,120),randint(50,120)),segundo_ogro_posic,diccionario_ogro,2,3,"vuelta")
         lista_enemigos.append(nuevo_ogro1)
         lista_enemigos.append(nuevo_ogro2)
     return lista_enemigos

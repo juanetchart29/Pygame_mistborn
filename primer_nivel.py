@@ -6,14 +6,8 @@ from ModoDesarrollador import *
 from Personaje import *
 from Plataforma import Plataforma
 from Ogros import Ogros
-#-------CONSTANTES-------
-
-
-
-
-
-
-#/------CONSTANTES-------
+from Reloj import Reloj
+from Contador import Contador
 
 
 
@@ -98,6 +92,8 @@ lista_plataforma1 = [piso,plataforma1,plataforma2,plataforma3,plataforma4,plataf
  
 
 #------BUCLE------
+cronometro = Reloj(60)
+contador = Contador((35,35),(58,0),path_monedas,vin)
 
 flag = True
 while flag:
@@ -112,7 +108,6 @@ while flag:
             # Obtener la posición del clic
             click_position = pygame.mouse.get_pos()
             print("Posición del clic:", click_position)
-    
     lista_teclas = pygame.key.get_pressed()
             
     esta_pisando = piso
@@ -127,7 +122,11 @@ while flag:
         RELOJ.tick(FPS)
         
           
-                
+    cronometro.actualizar()
+    cronometro.dibujar(PANTALLA)
+    contador.actualizar()
+    contador.dibujar(PANTALLA)
+    
     blitear_pisos(lista_plataforma1,PANTALLA)   
     if get_modo()==True:
         for lado in piso._lados:

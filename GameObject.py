@@ -28,6 +28,7 @@ class GameObject :
     def convertir_imagenes_lista(self):
         nueva_lista_imagenes = []
         for i in  range(len(self._lista_paths)): 
+            
             imagen_cargada = pygame.image.load(self._lista_paths[i])
             imagen_cargada = pygame.transform.scale(imagen_cargada,self._tamaño)
             nueva_lista_imagenes.append(imagen_cargada)

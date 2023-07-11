@@ -9,6 +9,8 @@ from Ogros import Ogros
 from Arquero import Arquero
 from Coin import Coin
 from Trampa import Trampa
+from Contador import Contador
+from Reloj import Reloj
 
 pygame.init()
 
@@ -24,7 +26,7 @@ def nivel_2():
     x_inicial = 50
     y_inicial = H - tamaño_personaje[0] -50
 
-    vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",25,0,50,lista_proyectil)
+    vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",25,0,lista_proyectil)
 
     #ENEMIGOS 
     #ogros 
@@ -34,9 +36,13 @@ def nivel_2():
     arquero2= Arquero((100,100),(1368, 220),diccionario_arquero,path_flecha) 
     lista_enemigos = [ogro3,arquero1,arquero2]
 
+    #CONTADOR Y RELOJ 
+    cronometro = Reloj(60,(1250,0))
+    contador = Contador((35,35),(1308,0),path_contador,vin)
+
+
 
     #COINS
-
     coin_1 = Coin((30,30),(400,500),path_monedas,20,False)
 
 
@@ -58,7 +64,10 @@ def nivel_2():
     trampa_dos = Trampa((100,50),(677,670),path_trampa)
 
     lista_trampas = [trampa_uno,trampa_dos]
-
+    
+    # PORTAL 
+    portal = Portal((50,100),(120,0),path_portal)
+    
     #PISO
     piso = Plataforma((W,20),(0,715),lista_plataforma1)
 
@@ -115,16 +124,26 @@ def nivel_2():
             
 
         lista_teclas = pygame.key.get_pressed()
+        
         esta_pisando = piso
         esta_pisando = pisando_plataforma(lista_pisos,vin,piso)
         
+        
         if vin._vida > 0 : 
             acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_2,vin,esta_pisando,lista_pisos,lista_enemigos)
+            lista_monedas = enemigos(PANTALLA,lista_enemigos,vin,lista_pisos,lista_monedas)
             monedas(PANTALLA,lista_monedas,vin)
-            enemigos(PANTALLA,lista_enemigos,vin,lista_pisos)
         else: 
             PANTALLA.blit(fondo_lvl_2[0],(0,0))
             PANTALLA.blit(vin._dict_imagenes["muerta"][0],(vin._rectangulo.center))
+            return 0            
+
+        
+        cronometro.actualizar()
+        cronometro.dibujar(PANTALLA)
+        contador.actualizar(vin)
+        contador.dibujar(PANTALLA)
+        
         
         blitear_pisos(lista_pisos,PANTALLA)
         trampas(lista_trampas,lista_enemigos,vin,PANTALLA)
@@ -132,7 +151,9 @@ def nivel_2():
             pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
 
             
-        
+        next_level = level_manager(PANTALLA,portal,vin)
+        if next_level == True:
+            return 1
         
             
     

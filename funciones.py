@@ -1,12 +1,11 @@
 import pygame
 from Personaje import Personaje
-from PersonajePrincipal import  *
 from imagenes import *
 from Proyectil import Proyectil
 from Ogros import Ogros
 from Arquero import Arquero
 from settings import *
-from Boos import Boos
+from Boos import Boss
 from Portal import Portal
 from Coin import Coin
 # -----BANDERAS------
@@ -23,7 +22,13 @@ def level_manager(pantalla,portal:Portal,un_personaje):
         return False    
 
 def actualizar_pantalla(pantalla,fondo:list,un_personaje,lista_enemigos,lista_plataformas):
-    pantalla.blit(fondo[0],(0,0))
+    try:
+    
+        pantalla.blit(fondo[0],(0,0))
+    
+    except:
+        pantalla.blit(fondo,(0,0))
+
     un_personaje.update(pantalla,lista_enemigos,lista_plataformas)
     
     
@@ -145,9 +150,8 @@ def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas,li
                 enemigo.accion_enemigo(un_personaje,pantalla,lista_plataformas)
             elif type(enemigo) == Arquero:
                 enemigo.accion_enemigo(pantalla,un_personaje,lista_enemigos_vivos)    
-            elif type(enemigo) == Boos:
+            elif type(enemigo) == Boss:
                     enemigo.accion_enemigo(pantalla,lista_plataformas,lista_enemigos,un_personaje)
-            # print(ogro._vida)
         else:
             if  type(enemigo)== Arquero:
                 enemigo.arquero_muerto(pantalla,un_personaje,lista_enemigos_vivos)
@@ -156,9 +160,20 @@ def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas,li
                     nueva_moneda = Coin((30,30),(enemigo._rectangulo.x,enemigo._rectangulo.y),path_monedas,20,False)
                     enemigo._vivo = False
                     lista_monedas.append(nueva_moneda)
+            #aca agregar la animacio de muerte del jefe final
+            if type(enemigo)== Boss:
+                enemigo._vive = False
+
+
     return lista_monedas     
         
-            
+def derroto_al_jefe(lista_enemigos):
+    for enemigo in lista_enemigos:
+        if type(enemigo) == Boss and enemigo._vida <= 0 and enemigo._vivo == False:
+            return True
+    return False
+         
+           
                       
 def dropear_ogros(lista_enemigos:list,primer_ogro_posic:tuple,segundo_ogro_posic:tuple):
     global bandera_tiempo
@@ -167,7 +182,6 @@ def dropear_ogros(lista_enemigos:list,primer_ogro_posic:tuple,segundo_ogro_posic
 
             
     if tiempo_ahora - bandera_tiempo > cool_down and len(lista_ogros_vivos)<3:
-        print("PASO EL TIEMPO ")
         bandera_tiempo = tiempo_ahora
         nuevo_ogro1 = Ogros((103,103),primer_ogro_posic,diccionario_ogro,2,3,"ida")
         nuevo_ogro2 = Ogros((150,150),segundo_ogro_posic,diccionario_ogro,2,3,"vuelta")

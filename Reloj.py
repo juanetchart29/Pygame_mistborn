@@ -1,13 +1,13 @@
 import pygame
 
 class Reloj:
-    def __init__(self, tiempo_inicial:int):
+    def __init__(self, tiempo_inicial:int,posicion):
         self.tiempo = tiempo_inicial
         self.cooldown = pygame.time.get_ticks()  
         self.cooldown_intervalo = 1000 
         self.fuente = pygame.font.Font(None, 50)
         self.color_texto = (255, 255, 255)
-        self.posicion_texto = (0, 0)
+        self.posicion_texto = posicion
 
     def actualizar(self):
         tiempo_actual = pygame.time.get_ticks()

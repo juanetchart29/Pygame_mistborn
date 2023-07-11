@@ -8,12 +8,12 @@ from Coin import Coin
 
 
 class Personaje(GameObject):
-    def __init__(self, tamaño: tuple, posicion: tuple, diccionario_paths: dict,contador_pasos:int,nombre:str,potencia_salto : int,daño_ataque :int,score:int,lista_imagen_proyectil:list) -> None:
+    def __init__(self, tamaño: tuple, posicion: tuple, diccionario_paths: dict,contador_pasos:int,nombre:str,potencia_salto : int,score:int,lista_imagen_proyectil:list) -> None:
         super().__init__(tamaño, posicion)
-        
     #IMAGENES
         self._dict_path = diccionario_paths
         self._dict_imagenes = self.convertir_imagenes_diccioario()
+        
         #establezco la primer lista del diccionario
         self.lista_imagen_inicial = next(iter(self._dict_imagenes.values()))
         #establezco la primer imagen como el elemento [0] de la primer lista
@@ -46,7 +46,6 @@ class Personaje(GameObject):
         self._contador = 0
         self._nombre = nombre 
         self._vida = 100
-        self._daño_ataque = daño_ataque
         self._score = score
         self._monedas = 0
     #BANDERAS
@@ -71,12 +70,12 @@ class Personaje(GameObject):
                 print(type(ruta_imagen))
                 try:
                     imagen_cargada = pygame.image.load(ruta_imagen)
+                    if keys.endswith("_i"):
+                        imagen_cargada = pygame.transform.flip(imagen_cargada,True,False) 
                 except:
                     imagen_cargada = ruta_imagen    
                 imagen_cargada = pygame.transform.scale(imagen_cargada,self._tamaño)
                 #si la clave del diccionario termina con _i rota la imagen 
-                if keys.endswith("_i"):
-                    imagen_cargada = pygame.transform.flip(imagen_cargada,True,False) 
                     
                 nueva_lista_imagenes.append(imagen_cargada)
                 

@@ -5,8 +5,10 @@ from funciones import *
 from ModoDesarrollador import *
 from Personaje import *
 from Plataforma import Plataforma
+from Reloj import Reloj
+from Contador import Contador
 
-#CONFIG
+
 pygame.init()
 
 
@@ -15,15 +17,16 @@ def nivel_3():
     tamaño_personaje = (40,70)
     x_inicial = 50
     y_inicial = H - tamaño_personaje[0] -50
-    vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",25,0,50,lista_proyectil)
+    vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",25,0,lista_proyectil)
 
     #BACKGROUND
     fondo_lvl_3 = lista_fondos_lvl_3
     fondo_lvl_3[0]=pygame.image.load(lista_fondos_lvl_3[0])
     fondo_lvl_3[0]=pygame.transform.scale(fondo_lvl_3[0],TAMAÑO_PANTALLA)
 
-    #TRAMPAS
-
+    #CRONOMETRO Y RELOJ 
+    cronometro = Reloj(60,(0,0))
+    contador = Contador((35,35),(58,0),path_contador,vin)
 
     #PISO
     piso = Plataforma((W+500,30),(0,H-30),lista_plataforma1)
@@ -43,7 +46,7 @@ def nivel_3():
     lista_enemigos=[]
 
     #JEFE FINAL
-    dracula = Boos((400,200),(W/2 - 100,0),diccionario_boos,3,path_boos_proyectil)
+    dracula = Boss((400,200),(W/2 - 100,0),diccionario_boos,3,path_boos_proyectil)
     lista_enemigos.append(dracula )
 
     #MONEDAS
@@ -72,15 +75,11 @@ def nivel_3():
                 pygame.draw.rect(PANTALLA,"Blue",piso._lados[lado],1)
             for lado in vin._lados:
                 pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
-                # if lado == "right":
-                #     pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1) 
-            # for lado in ogro3._lados:
-            #     pygame.draw.rect(PANTALLA,"red",ogro3._lados[lado],1)
+          
             try:
                 pygame.draw.rect(PANTALLA,"yellow",vin._rectangulo_ataque,1)
             except :
-                print("TODAVIAN NO SE HA ESTABLECIDO EL RECTANGULO DEL ATAQUE, ATACA PARA PONER EL MODO DESARROLLADOR")
-            
+                pass
 
         lista_teclas = pygame.key.get_pressed()
         esta_pisando = piso
@@ -88,20 +87,30 @@ def nivel_3():
         
         if vin._con_vida : 
             acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_3,vin,esta_pisando,lista_pisos,lista_enemigos)
+            lista_monedas = enemigos(PANTALLA,lista_enemigos,vin,lista_pisos,lista_monedas)
             monedas(PANTALLA,lista_monedas,vin)
-            enemigos(PANTALLA,lista_enemigos,vin,lista_pisos)
+            blitear_pisos(lista_pisos,PANTALLA)
         else: 
             PANTALLA.blit(vin._dict_imagenes["muerta"],(vin._rectangulo.center))
+            return 0
         
-        blitear_pisos(lista_pisos,PANTALLA)
+        gana = derroto_al_jefe(lista_enemigos)
+        if gana:
+            return 1
         
-        for lado in vin._lados:
-            pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
-            
-        for enemigo in lista_enemigos:
-            for lado in enemigo._lados:
-                pygame.draw.rect(PANTALLA,"yellow",enemigo._lados[lado],1)
+        cronometro.actualizar()
+        cronometro.dibujar(PANTALLA)
+        contador.actualizar(vin)
+        contador.dibujar(PANTALLA)
+        
+        if get_modo():
+            for lado in vin._lados:
+                pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
                 
+            for enemigo in lista_enemigos:
+                for lado in enemigo._lados:
+                    pygame.draw.rect(PANTALLA,"yellow",enemigo._lados[lado],1)
+                    
             
             
         

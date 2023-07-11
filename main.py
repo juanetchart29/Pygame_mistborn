@@ -10,7 +10,7 @@ from Ogros import Ogros
 from Arquero import Arquero
 from Coin import Coin
 from Trampa import Trampa
-from Boos import Boos
+from Boos import Boss
 
 from tercer_nivel import nivel_3
 from segundo_nivel import nivel_2

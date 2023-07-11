@@ -4,7 +4,7 @@ from random import randint
 from Proyectil import Proyectil
 
 
-class Boos(Enemigo):
+class Boss(Enemigo):
     def __init__(self, tamaño: tuple, posicion: tuple, diccionario_imagenes: dict,velocidad:int,lista_path_proyectil) -> None:
         super().__init__(tamaño, posicion, diccionario_imagenes)
         self._patron = 1
@@ -27,7 +27,7 @@ class Boos(Enemigo):
         self._coul_down_ataque = 400
         self._tiempo_ahora_ataque = pygame.time.get_ticks()
         
-        
+        self._vive = True
         
     def accion_enemigo(self,pantalla,lista_plataformas,lista_enemigos,un_personaje):
         if self._vida > 0:
@@ -47,7 +47,6 @@ class Boos(Enemigo):
             self._tiempo_ahora_ataque = pygame.time.get_ticks()
             if self._tiempo_ahora_ataque - self._bandera_tiempo_ataque >self._coul_down_ataque :
                 self._bandera_tiempo_ataque = self._tiempo_ahora_ataque
-                print("entra")
                 nuevo_proyectil = Proyectil((40,40),(self._rectangulo.x+self._tamaño[0]/2,self._rectangulo.y+self._tamaño[1]),self._path_proyectil,10,-2)
                 nuevo_proyectil._activo = True
                 self._lista_proyectiles.append(nuevo_proyectil)
@@ -96,4 +95,4 @@ class Boos(Enemigo):
                     self._rectangulo.right = plataforma._rectangulo.left
                     self._direccion *= -1
                 
-        
+    

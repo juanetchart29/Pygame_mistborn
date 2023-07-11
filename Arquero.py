@@ -74,7 +74,6 @@ class Arquero(Enemigo):
             if self._que_hace =="dispara":
                 self._bandera_disparo = True
                 self._que_hace = "quieto"
-                print(self._que_hace)
                 
         animacion = imagenes_lista[self._contador//12]
         pantalla.blit(animacion,(self._rectangulo.x,self._rectangulo.y))

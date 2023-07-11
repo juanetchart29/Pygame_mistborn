@@ -39,7 +39,7 @@ def nivel_1():
     x_inicial = 50
     y_inicial = H - tamaño_personaje[0] -50
 
-    vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",25,0,50,lista_proyectil)
+    vin = Personaje(tamaño_personaje,(x_inicial, y_inicial),diccionario_vin,0,"VIN",25,0,lista_proyectil)
 
     
     #---OGRO---
@@ -91,8 +91,8 @@ def nivel_1():
     
 
     #------BUCLE------
-    cronometro = Reloj(60)
-    contador = Contador((35,35),(58,0),path_monedas,vin)
+    cronometro = Reloj(60,(0,0))
+    contador = Contador((35,35),(58,0),path_contador,vin)
 
     flag = True
     while flag:
@@ -125,7 +125,7 @@ def nivel_1():
             
         cronometro.actualizar()
         cronometro.dibujar(PANTALLA)
-        contador.actualizar()
+        contador.actualizar(vin)
         contador.dibujar(PANTALLA)
         
         blitear_pisos(lista_plataforma1,PANTALLA)   
@@ -144,7 +144,8 @@ def nivel_1():
             try:
                 pygame.draw.rect(PANTALLA,"yellow",vin._rectangulo_ataque,1)
             except :
-                print("TODAVIAN NO SE HA ESTABLECIDO EL RECTANGULO DEL ATAQUE, ATACA PARA PONER EL MODO DESARROLLADOR")
+                pass
+            
             for lado in plataforma1._lados:
                 pygame.draw.rect(PANTALLA,"blue",plataforma1._lados[lado],1)  
             for lado in plataforma2._lados:

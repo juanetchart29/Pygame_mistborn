@@ -101,6 +101,9 @@ path_monedas = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTB
         r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda4.png",
         r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\moneda5.png"]
 
+
+path_contador = ["src/personajes/coins/moneda1.png","src/personajes/VIN/corazon/0.png"]
+
 path_moneda_roja = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\coins\0.png"]
 
 path_enemigos_i = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\personajes\enemigos\9.png",

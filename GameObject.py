@@ -28,9 +28,15 @@ class GameObject :
     def convertir_imagenes_lista(self):
         nueva_lista_imagenes = []
         for i in  range(len(self._lista_paths)): 
-            
-            imagen_cargada = pygame.image.load(self._lista_paths[i])
-            imagen_cargada = pygame.transform.scale(imagen_cargada,self._tamaño)
+            try :
+                imagen_cargada = pygame.image.load(self._lista_paths[i])
+            except:
+                imagen_cargada = self._lista_paths[i]
+            try:
+                imagen_cargada = pygame.transform.scale(imagen_cargada,self._tamaño)
+            except TypeError:
+                imagen_cargada = pygame.transform.scale(imagen_cargada._imagen,self._tamaño)
+                
             nueva_lista_imagenes.append(imagen_cargada)
         return nueva_lista_imagenes            
 
@@ -49,6 +55,18 @@ class GameObject :
                 
             self._dict_path[keys] = nueva_lista_imagenes
         return self._dict_path
+    def convertir_imagenes_diccionario_2(self):
+        for keys,value in self._dict_path.items():
+            nueva_lista_imagenes = []
+            for ruta_imagen in value: 
+                imagen_cargada = ruta_imagen
+                imagen_cargada = pygame.transform.scale(imagen_cargada,self._tamaño)
+                #si la clave del diccionario termina con _i rota la imagen 
+                nueva_lista_imagenes.append(imagen_cargada)
+                
+            self._dict_path[keys] = nueva_lista_imagenes
+        return self._dict_path
+        
    
     
     

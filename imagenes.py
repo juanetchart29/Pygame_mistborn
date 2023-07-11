@@ -81,6 +81,8 @@ lista_proyectil =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1
 
 path_trampa = ["src/trampa/0.png"]
 
+path_portal = ["src/portal/0.png"]
+
 lista_viga1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\vigas\plataforma piedra.png"]
 lista_viga2 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\vigas\6 (2).png"]
 

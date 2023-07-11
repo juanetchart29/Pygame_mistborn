@@ -29,7 +29,7 @@ class Ogros(Enemigo):
         
         self._bandera_piso = True
         
-       
+        self._vivo = True
         #animacion
         self._que_hace = "camina_derecha_i"
 

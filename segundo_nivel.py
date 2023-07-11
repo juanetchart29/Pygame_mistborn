@@ -11,9 +11,7 @@ from Coin import Coin
 from Trampa import Trampa
 
 pygame.init()
-PANTALLA = pygame.display.set_mode(TAMAÑO_PANTALLA)
 
-RELOJ = pygame.time.Clock()
 
 def nivel_2():
     fondo_lvl_2 = lista_fondos_lvl_2
@@ -140,6 +138,4 @@ def nivel_2():
     
         RELOJ.tick(FPS)
         pygame.display.update()
-nivel_2()
     
-pygame.quit()

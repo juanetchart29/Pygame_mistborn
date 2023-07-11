@@ -1,38 +1,92 @@
 
-cosas por arreglar:
- 
-CORREGIR: 
-
 
 
 corregir la animacion de muerte de vin para que no vuelva a reproducirse-> corregir con api
 
 agregarle:
 que cuando golpea con la espada una flecha que la flecha desaparezca
-agregarle una trampa par ayudar a controolar las oleadas de ogros en el lvl 2 y ponerla en el lvl 1 tambien
+agregarle una trampa par ayudar a controolar las oleadas de oen el lvl 1 tambien
 
 
 TENER EN CUENTA:
 
-
 ARREGLAR:
 cuando mueren que suelten monedas,los ogro
-
 agregar la musica
 agregar la vida en cada nivel y agregar el tiempo 
 hacer el ux ui de la pantalla
 hacer en la base de datos el mejor jugador
 
 
-corregir 10/7:
+corregir:
 corregir el patron de movimiento
+animacion de muerte del protagonista
+que cuando se mueran suelten monedas
+corregir el escalon del tercer nivel y agregarle monedas 
+que cuando golpea con la espada una flecha que la flecha desaparezca
+agregarle una trampa par ayudar a controolar las oleadas de oen el lvl 1 tambien
+corregir las plataformas del nivel 1
 
 
-3er y ultimo nivel
+Menu e interfaz:
+apartado de opciones
+input name
+tabla de mejores jugadores
+una opcion para subir el volumen en las opciones copiarselo a german
 
-POR HACER:
-humo cuanndo se mueren ---> repo (BANDERA SI LA VIDA LLEGA A 0 EN VEZ DE DESAPARECERLO)
-arreglar que cuando caen los ogros de la derecha se vean del ultimo lado que estaban antes
 
 
 
+
+
+def play():
+    while True:
+        PLAY_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
+
+        PLAY_TEXT = get_font(45).render("This is the PLAY screen.", True, "White")
+        PLAY_RECT = PLAY_TEXT.get_rect(center=(640, 260))
+        SCREEN.blit(PLAY_TEXT, PLAY_RECT)
+
+        PLAY_BACK = Button(image=None, pos=(640, 460), 
+                            text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
+
+        PLAY_BACK.changeColor(PLAY_MOUSE_POS)
+        PLAY_BACK.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
+                    main_menu()
+
+        pygame.display.update()
+    
+def options():
+    while True:
+        OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("white")
+
+        OPTIONS_TEXT = get_font(45).render("This is the OPTIONS screen.", True, "Black")
+        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(640, 260))
+        SCREEN.blit(OPTIONS_TEXT, OPTIONS_RECT)
+
+        OPTIONS_BACK = Button(image=None, pos=(640, 460), 
+                            text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+
+        OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
+        OPTIONS_BACK.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if OPTIONS_BACK.checkForInput(OPTIONS_MOUSE_POS):
+                    main_menu()
+
+        pygame.display.update()

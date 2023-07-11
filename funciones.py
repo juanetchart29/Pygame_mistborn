@@ -6,14 +6,21 @@ from Proyectil import Proyectil
 from Ogros import Ogros
 from Arquero import Arquero
 from settings import *
-from random import randint
 from Boos import Boos
+from Portal import Portal
+from Coin import Coin
 # -----BANDERAS------
 bandera_tiempo = pygame.time.get_ticks()
 cool_down = 7000 #milis
 
 
 
+def level_manager(pantalla,portal:Portal,un_personaje):
+    portal.funciones_portal(un_personaje,pantalla)
+    if portal._next_lvl == True:
+        return True
+    else:
+        return False    
 
 def actualizar_pantalla(pantalla,fondo:list,un_personaje,lista_enemigos,lista_plataformas):
     pantalla.blit(fondo[0],(0,0))
@@ -130,7 +137,7 @@ def monedas(pantalla,lista_monedas,un_personaje:Personaje):
             if moneda._rectangulo.colliderect(un_personaje._rectangulo):
                 un_personaje.agarrar_moneda(moneda)
 
-def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas):
+def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas,lista_monedas):
     lista_enemigos_vivos = filtrar_ogros_vivos(lista_enemigos)        
     for enemigo in lista_enemigos:
         if enemigo._vida > 0:
@@ -141,11 +148,18 @@ def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas):
             elif type(enemigo) == Boos:
                     enemigo.accion_enemigo(pantalla,lista_plataformas,lista_enemigos,un_personaje)
             # print(ogro._vida)
-        elif  type(enemigo)== Arquero:
+        else:
+            if  type(enemigo)== Arquero:
                 enemigo.arquero_muerto(pantalla,un_personaje,lista_enemigos_vivos)
+            if type(enemigo)== Ogros:
+                if enemigo._vivo == True:
+                    nueva_moneda = Coin((30,30),(enemigo._rectangulo.x,enemigo._rectangulo.y),path_monedas,20,False)
+                    enemigo._vivo = False
+                    lista_monedas.append(nueva_moneda)
+    return lista_monedas     
+        
             
-            
-#   ogro3 = Ogros((100,100),(100,50),diccionario_ogro,150,5,"ida")          
+                      
 def dropear_ogros(lista_enemigos:list,primer_ogro_posic:tuple,segundo_ogro_posic:tuple):
     global bandera_tiempo
     tiempo_ahora = pygame.time.get_ticks()

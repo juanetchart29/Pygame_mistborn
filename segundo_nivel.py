@@ -8,7 +8,7 @@ from Plataforma import Plataforma
 from Ogros import Ogros
 from Arquero import Arquero
 from Coin import Coin
-
+from Trampa import Trampa
 
 pygame.init()
 PANTALLA = pygame.display.set_mode(TAMAÑO_PANTALLA)
@@ -55,6 +55,11 @@ def nivel_2():
     # coin_10= Coin((30,30),(193, 149),path_moneda_roja,20,True) ,coin_10
     lista_monedas = [coin_1,coin_2,coin_3,coin_4,coin_5,coin_6,coin_7,coin_8,coin_9]
 
+    #TRAMPA
+    trampa_uno = Trampa((100,50),(550,670),path_trampa)
+    trampa_dos = Trampa((100,50),(677,670),path_trampa)
+
+    lista_trampas = [trampa_uno,trampa_dos]
 
     #PISO
     piso = Plataforma((W,20),(0,715),lista_plataforma1)
@@ -115,15 +120,16 @@ def nivel_2():
         esta_pisando = piso
         esta_pisando = pisando_plataforma(lista_pisos,vin,piso)
         
-        if vin._con_vida : 
+        if vin._vida > 0 : 
             acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_2,vin,esta_pisando,lista_pisos,lista_enemigos)
             monedas(PANTALLA,lista_monedas,vin)
             enemigos(PANTALLA,lista_enemigos,vin,lista_pisos)
         else: 
-            PANTALLA.blit(vin._dict_imagenes["muerta"],(vin._rectangulo.center))
+            PANTALLA.blit(fondo_lvl_2[0],(0,0))
+            PANTALLA.blit(vin._dict_imagenes["muerta"][0],(vin._rectangulo.center))
         
         blitear_pisos(lista_pisos,PANTALLA)
-        
+        trampas(lista_trampas,lista_enemigos,vin,PANTALLA)
         for lado in vin._lados:
             pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
 
@@ -134,6 +140,6 @@ def nivel_2():
     
         RELOJ.tick(FPS)
         pygame.display.update()
-
+nivel_2()
     
 pygame.quit()

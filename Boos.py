@@ -19,7 +19,7 @@ class Boos(Enemigo):
         self._lista_proyectiles = []
         
         self._bandera_tiempo= pygame.time.get_ticks()
-        self._coul_down = 1500
+        self._coul_down = 600
         self._tiempo_ahora = pygame.time.get_ticks()
         
         #could down ataque
@@ -71,8 +71,8 @@ class Boos(Enemigo):
     def movimiento_jefe(self,lista_plataformas:list):
         self._rectangulo.x += self._velocidad_x
         if self._tiempo_ahora - self._bandera_tiempo > self._coul_down:
-            self._patron = int(randint(1,20))
-        if self._patron == 5:
+            self._patron = int(randint(1,3))
+        if self._patron == 3:
             self._velocidad_x = 0
         else:
             if self._patron % 2 == 0:

@@ -155,8 +155,8 @@ def dropear_ogros(lista_enemigos:list,primer_ogro_posic:tuple,segundo_ogro_posic
     if tiempo_ahora - bandera_tiempo > cool_down and len(lista_ogros_vivos)<3:
         print("PASO EL TIEMPO ")
         bandera_tiempo = tiempo_ahora
-        nuevo_ogro1 = Ogros((randint(50,120),randint(50,120)),primer_ogro_posic,diccionario_ogro,2,3,"ida")
-        nuevo_ogro2 = Ogros((randint(50,120),randint(50,120)),segundo_ogro_posic,diccionario_ogro,2,3,"vuelta")
+        nuevo_ogro1 = Ogros((103,103),primer_ogro_posic,diccionario_ogro,2,3,"ida")
+        nuevo_ogro2 = Ogros((150,150),segundo_ogro_posic,diccionario_ogro,2,3,"vuelta")
         lista_enemigos.append(nuevo_ogro1)
         lista_enemigos.append(nuevo_ogro2)
     return lista_enemigos
@@ -167,3 +167,7 @@ def filtrar_ogros_vivos(lista_enemigos:list):
         if type(enemigo) == Ogros and enemigo._vida > 0:
             lista_ogros_vivos.append(enemigo)
     return lista_ogros_vivos
+def trampas(lista_trampas:list,lista_enemigos:list,un_personaje,pantalla):
+    for trampa in lista_trampas:
+        trampa.hacer_daño(un_personaje,lista_enemigos)
+        trampa.blitear_trampa(pantalla)

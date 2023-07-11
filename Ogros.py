@@ -1,6 +1,6 @@
 import pygame
 from Enemigo import Enemigo
-
+from Coin import Coin
 
 class Ogros(Enemigo):
     def __init__(self, tamaño: tuple, posicion: tuple, diccionario_imagenes: dict,rango_movimiento_x:int,velocidad:int,tipo:str) -> None:
@@ -131,3 +131,7 @@ class Ogros(Enemigo):
             if self._rectangulo.colliderect(un_personaje._rectangulo):
                 self._que_hace = "ataca_izquierda"
                 un_personaje._vida -= self._daño
+                
+    # def muerte_ogro(self):
+    #     if self._vida <= 0 :
+    #         nueva_moneda = Coin()

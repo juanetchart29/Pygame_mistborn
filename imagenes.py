@@ -1,5 +1,5 @@
 import pygame 
-import os
+
 
 pygame.init()
 
@@ -79,7 +79,7 @@ vin_muerta = [r"C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\M
 
 lista_proyectil =["C:\\Users\\juane\\OneDrive\\Escritorio\\Programacion-y-labo-1\\MISTBORN\\Pygame_mistborn\\src\\personajes\\coins\\moneda1.png"]
 
-
+path_trampa = ["src/trampa/0.png"]
 
 lista_viga1 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\vigas\plataforma piedra.png"]
 lista_viga2 = [r"C:\Users\juane\OneDrive\Escritorio\Programacion-y-labo-1\MISTBORN\Pygame_mistborn\src\vigas\6 (2).png"]
@@ -153,22 +153,3 @@ diccionario_boos = {"enemigo":path_boos}
 
 
 
-########## pruebas de imagenes ###########
-#----imagenes----
-# lista_fondos  = cargar_imagenes(lista_fondos,"ff")
-# #QUIETO DERECHA E IZQUIERDA
-# vin_quieta_derecha= cargar_imagenes(vin_quieta_derecha)
-# vin_quieta_izquierda= cargar_imagenes(vin_quieta_izquierda)
-# #CORRIENDO DERECHA E IZQUIERDA
-# vin_corriendo_derecha = cargar_imagenes(vin_corriendo_derecha)
-# vin_corriendo_izquierda = girar_imagenes(vin_corriendo_derecha,True,False)
-# #SALTANDO DERECHA E IZQUIERDA
-# vin_saltando_d = cargar_imagenes(vin_saltando)
-# vin_saltando_i = girar_imagenes(vin_saltando_d,True,False)
-# #EN EL AIRE
-# vin_en_el_aire = cargar_imagenes(vin_en_el_aire)
-# #CALLENDO DERECHA E IZQUIERDA
-# vin_callendo_d = cargar_imagenes(vin_callendo)
-# vin_callendo_i = girar_imagenes(vin_callendo_d,True,False)
-
-#/---imagenes----

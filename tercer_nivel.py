@@ -5,9 +5,7 @@ from funciones import *
 from ModoDesarrollador import *
 from Personaje import *
 from Plataforma import Plataforma
-from Ogros import Ogros
-from Arquero import Arquero
-
+from Trampa import Trampa
 
 #CONFIG
 pygame.init()
@@ -25,6 +23,7 @@ fondo_lvl_3 = lista_fondos_lvl_3
 fondo_lvl_3[0]=pygame.image.load(lista_fondos_lvl_3[0])
 fondo_lvl_3[0]=pygame.transform.scale(fondo_lvl_3[0],TAMAÑO_PANTALLA)
 
+#TRAMPAS
 
 
 #PISO
@@ -67,7 +66,7 @@ while flag:
             # Obtener la posición del clic
             click_position = pygame.mouse.get_pos()
             print("Posición del clic:", click_position)
-    lista_enemigos = dropear_ogros(lista_enemigos,(200,30),(1400,30))
+    lista_enemigos = dropear_ogros(lista_enemigos,(100,30),(1350,30))
     
     if get_modo()==True:
         for lado in piso._lados:
@@ -99,7 +98,12 @@ while flag:
     
     for lado in vin._lados:
         pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
-
+        
+    for enemigo in lista_enemigos:
+        for lado in enemigo._lados:
+            pygame.draw.rect(PANTALLA,"yellow",enemigo._lados[lado],1)
+            
+        
         
     
     

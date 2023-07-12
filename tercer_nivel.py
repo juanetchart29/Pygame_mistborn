@@ -89,13 +89,12 @@ def nivel_3():
         esta_pisando = piso
         esta_pisando = pisando_plataforma(lista_pisos,vin,piso)
         
-        if vin._con_vida : 
+        if vin._vida <=0 : 
             acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_3,vin,esta_pisando,lista_pisos,lista_enemigos)
             lista_monedas = enemigos(PANTALLA,lista_enemigos,vin,lista_pisos,lista_monedas)
             monedas(PANTALLA,lista_monedas,vin)
             blitear_pisos(lista_pisos,PANTALLA)
         else: 
-            PANTALLA.blit(vin._dict_imagenes["muerta"],(vin._rectangulo.center))
             return 0
         
         gana = derroto_al_jefe(lista_enemigos)

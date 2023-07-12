@@ -245,7 +245,7 @@ def input_name(score):
 pygame.display.set_caption("Menu")
 
 def main_menu():
-    cancion_menu()
+    
     
     #imagen del fondo del menu
     nivel_uno = 2
@@ -253,6 +253,8 @@ def main_menu():
     nivel_tres = 2
     #titulo ventana
     while True:
+        detener_cancion()
+        cancion_menu()
         PANTALLA.blit(BG,(0,0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()

@@ -73,15 +73,15 @@ def nivel_1():
 
     #-------plataformas------
     plataforma1 = Plataforma((200,30),(100,600),lista_plataforma1)
-    plataforma2 = Plataforma((250,30),(311, 454),lista_plataforma1)
+    plataforma2 = Plataforma((269,30),(311, 454),lista_plataforma1)
     plataforma3 = Plataforma((200,30),(100,200) ,lista_plataforma1)
     plataforma4 = Plataforma((200,30),(800,200),lista_plataforma1)
-    plataforma5 = Plataforma((200,30),(1000,300),lista_plataforma1)
-    plataforma6 = Plataforma((200,30),(1200,300),lista_plataforma1)
+    plataforma5 = Plataforma((400,30),(1000,300),lista_plataforma1)
     plataforma7 = Plataforma((100,30),(1400,500),lista_plataforma1)
 
     plataforma8 = Plataforma((30,130),(100,630),lista_viga1)
-    plataforma9 = Plataforma((30,300),(550, 455),lista_viga1)
+    plataforma6 = Plataforma((30,H),(1470,0),lista_viga1)
+    plataforma9 = Plataforma((30,300),(550, 482),lista_viga1)
     plataforma10 = Plataforma((200,30),(600,100),lista_plataforma1)
     plataforma11 = Plataforma((30,125),(567, 0),lista_viga1)
     plataforma12 = Plataforma((30,100),(770, 128),lista_viga1)
@@ -132,6 +132,10 @@ def nivel_1():
         blitear_pisos(lista_plataforma1,PANTALLA)   
         
         next_level = level_manager(PANTALLA,portal,vin)
+        
+        if cronometro.acaba_el_tiempo() == True:
+            return 0
+        
         if next_level == True:
             set_score(vin._score)
             return 1

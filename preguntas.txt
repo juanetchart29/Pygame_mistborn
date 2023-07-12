@@ -5,14 +5,9 @@
 
 
 PRIMORDIAL:
-agregar la musica
-corregir las plataformas del nivel 1
-mostrar la vidad el enemigo
-agregarle que si se queda sin tiempo muere y mientras antes lo termine mas puntos gana
 
 
 Menu e interfaz:
-correr el input del nombre
 
 
 

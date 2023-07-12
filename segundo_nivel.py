@@ -41,7 +41,7 @@ def nivel_2():
 
     #CONTADOR Y RELOJ 
     cronometro = Reloj(60,(1250,0))
-    contador = Contador((35,35),(1308,0),path_contador,vin)
+    contador = Contador((35,35),(1300,0),path_contador,vin)
 
 
 
@@ -69,7 +69,7 @@ def nivel_2():
     lista_trampas = [trampa_uno,trampa_dos]
     
     # PORTAL 
-    portal = Portal((50,100),(120,0),path_portal)
+    portal = Portal((50,100),(120,30),path_portal)
     
     #PISO
     piso = Plataforma((W,20),(0,715),lista_plataforma1)
@@ -147,6 +147,9 @@ def nivel_2():
         cronometro.dibujar(PANTALLA)
         contador.actualizar(vin)
         contador.dibujar(PANTALLA)
+        
+        if cronometro.acaba_el_tiempo() == True:
+            return 0
         
         
         blitear_pisos(lista_pisos,PANTALLA)

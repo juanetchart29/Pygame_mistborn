@@ -31,7 +31,7 @@ class Contador(GameObject):
         self._string2 = ":" + str(self._vida)
     
     def dibujar(self, screen):
-        
+
         screen.blit(self._imagen_moneda,(self._posicion[0],self._posicion[1]))
         texto = self.fuente.render(self._string1, True, self.color_texto)
         screen.blit(texto, self.posicion_texto1)
@@ -40,3 +40,4 @@ class Contador(GameObject):
         texto = self.fuente.render(self._string2, True, self.color_texto)
         screen.blit(texto, self.posicion_texto2)
 
+    

@@ -154,7 +154,8 @@ diccionario_arquero = {"quieto" : path_arquero_quieto,
                         "muere":path_arquero_muere
                                         }
 
-diccionario_boos = {"enemigo":path_boos}                      
+icono_boss = ["src/personajes/jefe final/0.png"]
+diccionario_boos = {"enemigo":path_boos,"icono":icono_boss}                      
 
 
 

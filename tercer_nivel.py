@@ -89,7 +89,7 @@ def nivel_3():
         esta_pisando = piso
         esta_pisando = pisando_plataforma(lista_pisos,vin,piso)
         
-        if vin._vida <=0 : 
+        if vin._vida >0 : 
             acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_3,vin,esta_pisando,lista_pisos,lista_enemigos)
             lista_monedas = enemigos(PANTALLA,lista_enemigos,vin,lista_pisos,lista_monedas)
             monedas(PANTALLA,lista_monedas,vin)
@@ -106,6 +106,9 @@ def nivel_3():
         cronometro.dibujar(PANTALLA)
         contador.actualizar(vin)
         contador.dibujar(PANTALLA)
+        
+        if cronometro.acaba_el_tiempo() == True:
+            return 0
         
         if get_modo():
             for lado in vin._lados:

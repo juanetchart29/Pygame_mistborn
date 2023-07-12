@@ -20,7 +20,7 @@ pygame.mixer.init()
 
 def detener_cancion():
     pygame.mixer.music.pause()
-    
+
 def cancion_menu():
     pygame.mixer.music.load("src/musica/menu.mp3")
     pygame.mixer.music.play(-1)
@@ -167,6 +167,7 @@ def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas,li
                 enemigo.accion_enemigo(pantalla,un_personaje,lista_enemigos_vivos)    
             elif type(enemigo) == Boss:
                     enemigo.accion_enemigo(pantalla,lista_plataformas,lista_enemigos,un_personaje)
+                    enemigo.mostrar_vida(pantalla)
         else:
             if  type(enemigo)== Arquero:
                 enemigo.arquero_muerto(pantalla,un_personaje,lista_enemigos_vivos)

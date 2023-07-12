@@ -21,4 +21,9 @@ class Reloj:
         texto = self.fuente.render(str(self.tiempo), True, self.color_texto)
         screen.blit(texto, self.posicion_texto)
 
-
+    def acaba_el_tiempo(self):
+        if self.tiempo <=0:
+            
+            return True
+        else: return False
+        

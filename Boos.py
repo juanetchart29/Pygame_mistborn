@@ -9,7 +9,7 @@ class Boss(Enemigo):
         super().__init__(tamaño, posicion, diccionario_imagenes)
         self._patron = 1
         
-        self._vida = 100
+        self._vida = 500
         self._velocidad_x = velocidad
 
         self._modulo_velocidad = velocidad
@@ -24,7 +24,7 @@ class Boss(Enemigo):
         
         #could down ataque
         self._bandera_tiempo_ataque= pygame.time.get_ticks()
-        self._coul_down_ataque = 400
+        self._coul_down_ataque = 600
         self._tiempo_ahora_ataque = pygame.time.get_ticks()
         
         self._vive = True
@@ -58,7 +58,7 @@ class Boss(Enemigo):
                     enemigo._vida -= 120      
                     flecha._activo = False
             if un_personaje._rectangulo.colliderect(flecha._rectangulo) and un_personaje._vida > 0:
-                un_personaje._vida -= 50
+                un_personaje._vida -= 30
                 flecha._activo = False        
             
     def blitear_proyectiles(self,pantalla):
@@ -95,4 +95,14 @@ class Boss(Enemigo):
                     self._rectangulo.right = plataforma._rectangulo.left
                     self._direccion *= -1
                 
-    
+    def mostrar_vida(self,pantalla):
+        font = pygame.font.Font(None, 36)
+        
+        icono = self._dict_imagenes["icono"]
+        icono = pygame.transform.scale(icono[0],(30,60))
+        texto = ":"+str(self._vida)
+        texto = font.render(texto, True, (0,0,0))
+        texto_rect = texto.get_rect()
+        texto_rect.center = (1450,43)
+        pantalla.blit(icono,(1390,0))
+        pantalla.blit(texto,texto_rect)

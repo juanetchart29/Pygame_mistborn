@@ -177,9 +177,9 @@ def top_5(lista_usuarios):
         posicion_y = TAMAÑO_PANTALLA[1]/2 -100
         
         PANTALLA.blit(BG,(0,0))
-        label_text2 = font.render("RANKING DE MEJORES JUGADORES:", True, (255, 255, 255))
+        label_text2 = font.render("RANKING DE MEJORES JUGADORES:", True, (0, 255, 255))
         label_rect2 = label_text2.get_rect()
-        label_rect2.center = (posicion_x,posicion_y )
+        label_rect2.center = (posicion_x,posicion_y -150)
         
         MENU_BUTTON.update(PANTALLA)
         for user_data in lista_usuarios:
@@ -188,6 +188,7 @@ def top_5(lista_usuarios):
             LABEL_BUTTON_USER.update(PANTALLA)
             posicion_y += 100
 
+        PANTALLA.blit(label_text2,label_rect2)
                   
         pygame.display.update()
         reloj.tick(60)
@@ -228,8 +229,9 @@ def input_name(score):
         label_rect2 = label_text2.get_rect()
         label_rect2.center = (TAMAÑO_PANTALLA[0]/ 2 -60, TAMAÑO_PANTALLA[1]/2 -200)
 
-        input_name = pygame.Rect((TAMAÑO_PANTALLA[0]/2 - 60, TAMAÑO_PANTALLA[1]//2 , 400, 50))
+        input_name = pygame.Rect((TAMAÑO_PANTALLA[0]/2 - 250, TAMAÑO_PANTALLA[1]//2 , 400, 50))
         pygame.draw.rect(PANTALLA, (0, 0, 0), input_name)  
+        
         texto_superficie = font.render(nombre, True, (255,255, 255))
         PANTALLA.blit(texto_superficie, (input_name.x + 10, input_name.y + 10))
         PANTALLA.blit(label_text1, label_rect1)
@@ -245,16 +247,15 @@ def input_name(score):
 pygame.display.set_caption("Menu")
 
 def main_menu():
-    
-    
-    #imagen del fondo del menu
+    cancion_menu()
+    cambio_musica = False
     nivel_uno = 2
     nivel_dos = 2
     nivel_tres = 2
-    #titulo ventana
     while True:
-        detener_cancion()
-        cancion_menu()
+       
+
+        
         PANTALLA.blit(BG,(0,0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
@@ -281,6 +282,8 @@ def main_menu():
                 nivel_tres = 2
                 nivel_dos = 2
                 nivel_uno = 2
+                detener_cancion()
+                cancion_menu()
                 restart_score()
         
         

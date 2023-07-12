@@ -1,7 +1,7 @@
 import pygame
 from Enemigo import Enemigo 
 from Proyectil import Proyectil
-
+from Personaje import Personaje
 class Arquero(Enemigo):
     
     def __init__(self, tamaño: tuple, posicion: tuple, diccionario_imagenes: dict,path_flecha:list) -> None:
@@ -55,7 +55,7 @@ class Arquero(Enemigo):
             proyectil.lanzar_proyectil()
             pantalla.blit(proyectil._imagen, (proyectil._rectangulo.x, proyectil._rectangulo.y))
             
-    def hacer_daño_distancia(self,un_personaje,lista_enemigos):
+    def hacer_daño_distancia(self,un_personaje:Personaje,lista_enemigos):
         for flecha in self._lista_proyectiles:
             for enemigo in lista_enemigos:
                 if enemigo._rectangulo.colliderect(flecha._rectangulo) and enemigo != self :
@@ -64,6 +64,11 @@ class Arquero(Enemigo):
             if un_personaje._rectangulo.colliderect(flecha._rectangulo) and un_personaje._vida > 0:
                 un_personaje._vida -= 20
                 flecha._activo = False
+            # try:
+            #     if un_personaje._rectangulo_ataque.collidedict(flecha._rectangulo) and un_personaje._bandera_ataque:
+            #         flecha._activo = False
+            # except AttributeError:
+            #     pass 
     
     def animar_arquero(self,pantalla):
         

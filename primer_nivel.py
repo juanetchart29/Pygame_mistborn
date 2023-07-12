@@ -96,6 +96,7 @@ def nivel_1():
 
     flag = True
     while flag:
+        
         lista_eventos = pygame.event.get()
         for evento in lista_eventos:
             if evento.type == pygame.QUIT:

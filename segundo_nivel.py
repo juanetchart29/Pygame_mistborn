@@ -97,6 +97,7 @@ def nivel_2():
 
     flag = True
     while flag:
+        
         RELOJ.tick(FPS)
         lista_eventos = pygame.event.get()
         for evento in lista_eventos:

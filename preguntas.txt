@@ -13,7 +13,7 @@ agregarle que si se queda sin tiempo muere y mientras antes lo termine mas punto
 
 Menu e interfaz:
 correr el input del nombre
-z|
+
 
 
 

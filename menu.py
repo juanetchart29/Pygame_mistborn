@@ -22,6 +22,8 @@ from primer_nivel import nivel_1
 
 
 pygame.init()
+pygame.mixer.init()
+
 
 #fondos del menu
 BG = "src/fondos/Background.png"
@@ -243,6 +245,8 @@ def input_name(score):
 pygame.display.set_caption("Menu")
 
 def main_menu():
+    cancion_menu()
+    
     #imagen del fondo del menu
     nivel_uno = 2
     nivel_dos = 2
@@ -285,16 +289,23 @@ def main_menu():
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
                     manager = historia(1)
                     if manager == 1:
+                    
                         nivel_uno = nivel_1()
                         if nivel_uno == 1:
+                    
                             manager = historia(2)
                             if manager == 1:
+                               
                                 nivel_dos = nivel_2()
                                 if nivel_dos == 1:
                                     manager = historia(3)
                                     if manager == 1:
+                                        detener_cancion()
+                                        cancion_nivel()
                                         nivel_tres = nivel_3()
                                         if nivel_tres == 1:
+                                            detener_cancion()
+                                            cancion_menu()
                                             score = get_score()
                                             nombre = input_name(score)
                                             #SUBO A LA BASE DE DATOS

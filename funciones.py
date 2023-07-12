@@ -15,6 +15,19 @@ bandera_tiempo = pygame.time.get_ticks()
 cool_down = 7000 #milis
 score = 0
 
+pygame.init()
+pygame.mixer.init()
+
+def detener_cancion():
+    pygame.mixer.music.pause()
+    
+def cancion_menu():
+    pygame.mixer.music.load("src/musica/menu.mp3")
+    pygame.mixer.music.play(-1)
+def cancion_nivel():
+    pygame.mixer.music.load("src/musica/in_game.mp3")
+    pygame.mixer.music.play(-1)
+
 
 def level_manager(pantalla,portal:Portal,un_personaje):
     portal.funciones_portal(un_personaje,pantalla)

@@ -109,22 +109,10 @@ def nivel_2():
             elif evento.type == pygame.MOUSEBUTTONDOWN:
                 # Obtener la posición del clic
                 click_position = pygame.mouse.get_pos()
-                print("Posición del clic:", click_position)
+                # print("Posición del clic:", click_position)
         lista_enemigos = dropear_ogros(lista_enemigos,(150,50),(W-150,50))
         
-        if get_modo()==True:
-            for lado in piso._lados:
-                pygame.draw.rect(PANTALLA,"Blue",piso._lados[lado],1)
-            for lado in vin._lados:
-                pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
-                # if lado == "right":
-                #     pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1) 
-            for lado in ogro3._lados:
-                pygame.draw.rect(PANTALLA,"red",ogro3._lados[lado],1)
-            try:
-                pygame.draw.rect(PANTALLA,"yellow",vin._rectangulo_ataque,1)
-            except :
-                print("TODAVIAN NO SE HA ESTABLECIDO EL RECTANGULO DEL ATAQUE, ATACA PARA PONER EL MODO DESARROLLADOR")
+       
             
 
         lista_teclas = pygame.key.get_pressed()

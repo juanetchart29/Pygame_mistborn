@@ -7,7 +7,8 @@ class Arquero(Enemigo):
     def __init__(self, tamaño: tuple, posicion: tuple, diccionario_imagenes: dict,path_flecha:list) -> None:
         super().__init__(tamaño, posicion, diccionario_imagenes)
 
-    
+        self._vida = 150
+
         self._path_flecha = path_flecha
         self._que_hace = "quieto"
         self._bandera_tiempo= pygame.time.get_ticks()
@@ -29,7 +30,7 @@ class Arquero(Enemigo):
     
     def lanzar_flecha(self):
         if self._bandera_disparo == True:
-            nuevo_proyectil = Proyectil((50,5),(self._rectangulo.x-10,self._rectangulo.y+16),self._path_flecha,7,-1)
+            nuevo_proyectil = Proyectil((50,5),(self._rectangulo.x-10,self._rectangulo.y+16),self._path_flecha,11,-1)
             nuevo_proyectil._activo = True
             self._lista_proyectiles.append(nuevo_proyectil)
             self._bandera_disparo = False
@@ -64,11 +65,11 @@ class Arquero(Enemigo):
             if un_personaje._rectangulo.colliderect(flecha._rectangulo) and un_personaje._vida > 0:
                 un_personaje._vida -= 20
                 flecha._activo = False
-            # try:
-            #     if un_personaje._rectangulo_ataque.collidedict(flecha._rectangulo) and un_personaje._bandera_ataque:
-            #         flecha._activo = False
-            # except AttributeError:
-            #     pass 
+            try:
+                if un_personaje._rectangulo_ataque.colliderect(flecha._rectangulo) and un_personaje._bandera_ataque:
+                    flecha._activo = False
+            except AttributeError:
+                pass 
     
     def animar_arquero(self,pantalla):
         

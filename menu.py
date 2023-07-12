@@ -30,7 +30,7 @@ BG = "src/fondos/Background.png"
 BG = pygame.image.load(BG)
 BG = pygame.transform.scale(BG,TAMAÑO_PANTALLA)
  
-introduccion1 = "src/menu/introduction.png"
+introduccion1 = "src/menu/introduccion.png"
 introduccion1 = pygame.image.load(introduccion1)
 introduccion1 = pygame.transform.scale(introduccion1,TAMAÑO_PANTALLA)
 

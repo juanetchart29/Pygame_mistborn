@@ -68,7 +68,7 @@ class Personaje(GameObject):
         for keys,value in self._dict_path.items():
             nueva_lista_imagenes = []
             for ruta_imagen in value: 
-                print(type(ruta_imagen))
+                # print(type(ruta_imagen))
                 try:
                     imagen_cargada = pygame.image.load(ruta_imagen)
                     if keys.endswith("_i"):
@@ -224,7 +224,7 @@ class Personaje(GameObject):
         if self._monedas > 0:
             self._time_now = pygame.time.get_ticks()
             if self._time_now-self._timer  >= self._cool_down:
-                print("se crea el proyectil")
+                # print("se crea el proyectil")
                 proyectil_vin = Proyectil((15,15),(self._rectangulo.x+self._tamaño[0],self._rectangulo.y+self._tamaño[1]/2),self._imagen_proyectil,40,x)
                 proyectil_vin._activo = True
                 self._lista_proyectiles.append(proyectil_vin)
@@ -273,9 +273,9 @@ class Personaje(GameObject):
         for enemigo in lista_enemigos:
             if enemigo._rectangulo.colliderect(self._rectangulo_ataque) and self._bandera_ataque :
                 if self._acaba_atacar:
-                    if enemigo._vida - 3 <= 0:
+                    if enemigo._vida - 5 <= 0:
                         self._score += 100
-                    enemigo._vida -= 3
+                    enemigo._vida -= 5
                     self._acaba_atacar = False
             else :
                 self._acaba_atacar = True
@@ -289,8 +289,8 @@ class Personaje(GameObject):
                         self._score += 50
                     enemigo._vida -= 100
                     moneda._activo = False
-                    if type(enemigo)== Boss:
-                        print(enemigo._vida)
+                    # if type(enemigo)== Boss:
+                        # print(enemigo._vida)
                         
     def chocar_proyectil_plataforma(self,lista_plataforma):
         for moneda in self._lista_proyectiles:

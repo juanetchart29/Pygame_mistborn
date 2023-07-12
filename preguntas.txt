@@ -14,10 +14,6 @@ Menu e interfaz:
 
 EXTRA:
 corregir el ._ de las clases
-que cuando golpea con la espada una flecha que la flecha desaparezca
-aumentarle la vida al arquero y la velocidad de las flechas
-bajarle el daño a los misiles del jefe hacia los ogros para que sea mas placentero matarlos a mele
-cambiar el fondo por el que se ve bien
 
 
 

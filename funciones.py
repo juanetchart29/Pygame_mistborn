@@ -243,9 +243,10 @@ def add_database(nombre, score):
             INSERT INTO Mistborn_users(Nombre, Puntos, Fecha) VALUES (?, ?, ?)
             '''
             conexion.execute(sentencia, (nombre, score, tiempo_ahora))
-            print("Se agregó con éxito.")
+            # print("Se agregó con éxito.")
         except Exception as e:
-            print(e)
+            pass
+            # print(e)
 
 
 def get_database():

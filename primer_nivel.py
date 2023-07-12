@@ -107,7 +107,8 @@ def nivel_1():
             elif evento.type == pygame.MOUSEBUTTONDOWN:
                 # Obtener la posición del clic
                 click_position = pygame.mouse.get_pos()
-                print("Posición del clic:", click_position)
+                # print("Posición del clic:", click_position)
+                
         lista_teclas = pygame.key.get_pressed()
                 
         esta_pisando = piso

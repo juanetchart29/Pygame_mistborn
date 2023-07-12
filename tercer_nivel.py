@@ -68,10 +68,7 @@ def nivel_3():
             elif evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_TAB:
                     cambiar_modo()
-            elif evento.type == pygame.MOUSEBUTTONDOWN:
-                # Obtener la posición del clic
-                click_position = pygame.mouse.get_pos()
-                print("Posición del clic:", click_position)
+            
         lista_enemigos = dropear_ogros(lista_enemigos,(100,30),(1350,30))
         
         if get_modo()==True:

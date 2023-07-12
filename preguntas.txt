@@ -6,28 +6,24 @@
 
 PRIMORDIAL:
 agregar la musica
-hacer en la base de datos el mejor jugador
 corregir las plataformas del nivel 1
 mostrar la vidad el enemigo
+agregarle que si se queda sin tiempo muere y mientras antes lo termine mas puntos gana
+
 
 Menu e interfaz:
-apartado cuando moris
-apartado de opciones
-input name
-tabla de mejores jugadores
-una opcion para subir el volumen en las opciones copiarselo a german
+correr el input del nombre
+z|
+
 
 
 EXTRA:
 corregir el ._ de las clases
-animacion de muerte del protagonista
-SACAR EL MODO DESARROLLADOR
-agregarle que si se queda sin tiempo muere
 que cuando golpea con la espada una flecha que la flecha desaparezca
-corregir el patron de movimiento
-si puedo animar la muerte del jefe final
 aumentarle la vida al arquero y la velocidad de las flechas
- 
+bajarle el daño a los misiles del jefe hacia los ogros para que sea mas placentero matarlos a mele
+cambiar el fondo por el que se ve bien
+
 
 
 

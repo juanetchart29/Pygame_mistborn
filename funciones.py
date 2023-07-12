@@ -13,7 +13,7 @@ from Coin import Coin
 # -----BANDERAS------
 bandera_tiempo = pygame.time.get_ticks()
 cool_down = 7000 #milis
-
+score = 0
 
 
 def level_manager(pantalla,portal:Portal,un_personaje):
@@ -202,19 +202,59 @@ def trampas(lista_trampas:list,lista_enemigos:list,un_personaje,pantalla):
         trampa.hacer_daño(un_personaje,lista_enemigos)
         trampa.blitear_trampa(pantalla)
         
-        
-        
+def set_score(x):
+    global score
+    score += x 
+
+def get_score():
+    global score
+    
+    return score
+
+def restart_score():
+    global score 
+    score = 0
     
 #FUNCIONES DE BASE DE DATOS
 
-def add_database(nombre,score):
+
+def add_database(nombre, score):
     tiempo_ahora = datetime.now()
-    tiempo_ahora = str(tiempo_ahora)
+    tiempo_formateado = tiempo_ahora.strftime("%d/%m/%Y")
+    tiempo_ahora = str(tiempo_formateado)
+    
     with sqlite3.connect("usuarios.db") as conexion:
         try:  
             sentencia = '''
-            insert into Mistborn_users(Nombre,Puntos,Fecha) values(?,?,?)
+            INSERT INTO Mistborn_users(Nombre, Puntos, Fecha) VALUES (?, ?, ?)
             '''
-            conexion.execute(sentencia,(nombre,score,tiempo_ahora))
+            conexion.execute(sentencia, (nombre, score, tiempo_ahora))
+            print("Se agregó con éxito.")
         except Exception as e:
-            print(e) 
+            print(e)
+
+
+def get_database():
+    lista_usuarios = []
+    with sqlite3.connect("usuarios.db") as conexion:
+        cursor = conexion.cursor()
+        
+        sentencia = '''
+        SELECT Nombre, Puntos, Fecha
+        FROM Mistborn_users
+        ORDER BY Puntos DESC
+        LIMIT 5
+        '''
+        
+        cursor.execute(sentencia)
+        
+        resultados = cursor.fetchall()
+        
+        for row in resultados:
+            nombre = row[0]
+            puntos = row[1]
+            fecha = row[2]
+            usuario = f"""{nombre}-{puntos}-{fecha}"""  
+            lista_usuarios.append(usuario)  
+        return lista_usuarios
+

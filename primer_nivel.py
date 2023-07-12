@@ -132,6 +132,7 @@ def nivel_1():
         
         next_level = level_manager(PANTALLA,portal,vin)
         if next_level == True:
+            set_score(vin._score)
             return 1
         
         if get_modo()==True:

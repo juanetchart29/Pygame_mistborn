@@ -99,6 +99,7 @@ def nivel_3():
         
         gana = derroto_al_jefe(lista_enemigos)
         if gana:
+            set_score(vin._score)
             return 1
         
         cronometro.actualizar()

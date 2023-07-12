@@ -25,22 +25,7 @@ pygame.init()
 pygame.mixer.init()
 
 
-#fondos del menu
-BG = "src/fondos/Background.png"
-BG = pygame.image.load(BG)
-BG = pygame.transform.scale(BG,TAMAÑO_PANTALLA)
- 
-introduccion1 = "src/menu/introduccion.png"
-introduccion1 = pygame.image.load(introduccion1)
-introduccion1 = pygame.transform.scale(introduccion1,TAMAÑO_PANTALLA)
 
-introduccion2 = "src/menu/introduccion2.png"
-introduccion2 = pygame.image.load(introduccion2)
-introduccion2 = pygame.transform.scale(introduccion2,TAMAÑO_PANTALLA)
-
-introduccion3 = "src/menu/prefinal.png"
-introduccion3 = pygame.image.load(introduccion3)
-introduccion3 = pygame.transform.scale(introduccion3 ,TAMAÑO_PANTALLA)
 
 
 def get_font(size): # Returns Press-Start-2P in the desired size
@@ -327,6 +312,6 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
-
 main_menu()
+
 pygame.quit()

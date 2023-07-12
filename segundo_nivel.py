@@ -112,8 +112,7 @@ def nivel_2():
                 # print("Posición del clic:", click_position)
         lista_enemigos = dropear_ogros(lista_enemigos,(150,50),(W-150,50))
         
-       
-            
+  
 
         lista_teclas = pygame.key.get_pressed()
         

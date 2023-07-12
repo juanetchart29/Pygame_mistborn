@@ -140,32 +140,6 @@ def nivel_1():
         if next_level == True:
             set_score(vin._score)
             return 1
-        
-        if get_modo()==True:
-            for lado in piso._lados:
-                pygame.draw.rect(PANTALLA,"Blue",piso._lados[lado],1)
-            for lado in vin._lados:
-                pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1)
-                # if lado == "right":
-                #     pygame.draw.rect(PANTALLA,"yellow",vin._lados[lado],1) 
-            try:
-                pygame.draw.rect(PANTALLA,"yellow",vin._rectangulo_ataque,1)
-            except :
-                pass
-            
-            for lado in plataforma1._lados:
-                pygame.draw.rect(PANTALLA,"blue",plataforma1._lados[lado],1)  
-            for lado in plataforma2._lados:
-                pygame.draw.rect(PANTALLA,"red",plataforma2._lados[lado],1)
-            for lado in plataforma3._lados:
-                pygame.draw.rect(PANTALLA,"orange",plataforma3._lados[lado],1)
-            for lado in plataforma4._lados:
-                pygame.draw.rect(PANTALLA,"white",plataforma4._lados[lado],1)
-            for proyectil in vin._lista_proyectiles:
-                if proyectil._activo == True:
-                    pygame.draw.rect(PANTALLA,"red",proyectil._rectangulo)
-            
-        
             
     
         RELOJ.tick(FPS)

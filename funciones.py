@@ -1,4 +1,6 @@
 import pygame
+import sqlite3
+from datetime import datetime
 from Personaje import Personaje
 from imagenes import *
 from Proyectil import Proyectil
@@ -169,7 +171,7 @@ def enemigos(pantalla,lista_enemigos,un_personaje:Personaje,lista_plataformas,li
         
 def derroto_al_jefe(lista_enemigos):
     for enemigo in lista_enemigos:
-        if type(enemigo) == Boss and enemigo._vida <= 0 and enemigo._vivo == False:
+        if type(enemigo) == Boss and enemigo._vida <= 0 and enemigo._vive == False:
             return True
     return False
          
@@ -199,3 +201,20 @@ def trampas(lista_trampas:list,lista_enemigos:list,un_personaje,pantalla):
     for trampa in lista_trampas:
         trampa.hacer_daño(un_personaje,lista_enemigos)
         trampa.blitear_trampa(pantalla)
+        
+        
+        
+    
+#FUNCIONES DE BASE DE DATOS
+
+def add_database(nombre,score):
+    tiempo_ahora = datetime.now()
+    tiempo_ahora = str(tiempo_ahora)
+    with sqlite3.connect("usuarios.db") as conexion:
+        try:  
+            sentencia = '''
+            insert into Mistborn_users(Nombre,Puntos,Fecha) values(?,?,?)
+            '''
+            conexion.execute(sentencia,(nombre,score,tiempo_ahora))
+        except Exception as e:
+            print(e) 

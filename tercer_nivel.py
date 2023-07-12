@@ -21,7 +21,10 @@ def nivel_3():
 
     #BACKGROUND
     fondo_lvl_3 = lista_fondos_lvl_3
-    fondo_lvl_3[0]=pygame.image.load(lista_fondos_lvl_3[0])
+    try:
+        fondo_lvl_3[0]=pygame.image.load(lista_fondos_lvl_3[0])
+    except TypeError:
+        fondo_lvl_3[0] = lista_fondos_lvl_3[0]
     fondo_lvl_3[0]=pygame.transform.scale(fondo_lvl_3[0],TAMAÑO_PANTALLA)
 
     #CRONOMETRO Y RELOJ 

@@ -19,7 +19,7 @@ class Boss(Enemigo):
         self._lista_proyectiles = []
         
         self._bandera_tiempo= pygame.time.get_ticks()
-        self._coul_down = 600
+        self._coul_down = 100
         self._tiempo_ahora = pygame.time.get_ticks()
         
         #could down ataque

@@ -5,6 +5,7 @@ from GameObject import GameObject
 from Plataforma import Plataforma
 from Proyectil import Proyectil
 from Coin import Coin
+from Boos import Boss
 
 
 class Personaje(GameObject):
@@ -250,11 +251,13 @@ class Personaje(GameObject):
             self._monedas += 1
             if moneda._cura:
                 if self._vida +50 > 100:
-                    
+                    self._score += 100
                     self._vida = 100
                 else:
                     self._vida+= 50
-    
+            else:
+                self._score += 20
+                
     
     def animacion_especifica(self,pantalla):
         imagenes_lista = self._dict_imagenes[self._que_hace]
@@ -270,6 +273,8 @@ class Personaje(GameObject):
         for enemigo in lista_enemigos:
             if enemigo._rectangulo.colliderect(self._rectangulo_ataque) and self._bandera_ataque :
                 if self._acaba_atacar:
+                    if enemigo._vida - 3 <= 0:
+                        self._score += 100
                     enemigo._vida -= 3
                     self._acaba_atacar = False
             else :
@@ -280,8 +285,13 @@ class Personaje(GameObject):
         for moneda in self._lista_proyectiles:
             for enemigo in lista_enemigos:                
                 if enemigo._rectangulo.colliderect(moneda._rectangulo) and enemigo._vida > 0:
+                    if enemigo._vida - 100 <= 0:
+                        self._score += 50
                     enemigo._vida -= 100
                     moneda._activo = False
+                    if type(enemigo)== Boss:
+                        print(enemigo._vida)
+                        
     def chocar_proyectil_plataforma(self,lista_plataforma):
         for moneda in self._lista_proyectiles:
             for plataforma in lista_plataforma:

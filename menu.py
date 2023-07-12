@@ -163,9 +163,47 @@ def historia(x):
                         
             
 def input_name():
-    pass
+    nombre = ""
+    while True:
+        font = pygame.font.Font(None, 36)
+        reloj = pygame.time.Clock()
+        PANTALLA.blit(BG,(0,0))
+        
+        MENU_MOUSE_POS = pygame.mouse.get_pos()
+        SEND_NAME = Button(image=pygame.image.load("src/menu/Play Rect.png"), pos=(1346, 569), 
+        text_input="Done", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+   
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if  SEND_NAME.checkForInput(MENU_MOUSE_POS):
+                        return nombre
+            if event.type == pygame.KEYDOWN:
+                if len(nombre) < 30:
+                    nombre += event.unicode
+        
+        
+        
+        
+        label_text = font.render("Ingrese su nombre:", True, (255, 255, 255))
+        label_rect = label_text.get_rect()
+        label_rect.center = (TAMAÑO_PANTALLA[0]/ 2 -60, TAMAÑO_PANTALLA[1]/2 -100)
+        
 
+        input_name = pygame.Rect((TAMAÑO_PANTALLA[0]/2 - 60, TAMAÑO_PANTALLA[1]//2 , 400, 50))
+        pygame.draw.rect(PANTALLA, (0, 0, 0), input_name)  
+        texto_superficie = font.render(nombre, True, (255,255, 255))
+        PANTALLA.blit(texto_superficie, (input_name.x + 10, input_name.y + 10))
+        PANTALLA.blit(label_text, label_rect)
+        
+        SEND_NAME.update(PANTALLA)
+        
 
+        pygame.display.update()
+        reloj.tick(60)
+            
+            
 pygame.display.set_caption("Menu")
 
 def main_menu():
@@ -210,7 +248,7 @@ def main_menu():
                                     if manager == 1:
                                         nivel_tres = nivel_3()
                                         if nivel_tres == 1:
-                                            pass
+                                            nombre = input_name()
 
                 if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     nivel_1()

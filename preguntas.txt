@@ -8,6 +8,7 @@ PRIMORDIAL:
 agregar la musica
 hacer en la base de datos el mejor jugador
 corregir las plataformas del nivel 1
+mostrar la vidad el enemigo
 
 Menu e interfaz:
 apartado cuando moris
@@ -25,7 +26,8 @@ agregarle que si se queda sin tiempo muere
 que cuando golpea con la espada una flecha que la flecha desaparezca
 corregir el patron de movimiento
 si puedo animar la muerte del jefe final
-
+aumentarle la vida al arquero y la velocidad de las flechas
+ 
 
 
 

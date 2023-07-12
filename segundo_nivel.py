@@ -17,7 +17,10 @@ pygame.init()
 
 def nivel_2():
     fondo_lvl_2 = lista_fondos_lvl_2
-    fondo_lvl_2[0]=pygame.image.load(lista_fondos_lvl_2[0])
+    try:
+        fondo_lvl_2[0]=pygame.image.load(lista_fondos_lvl_2[0])
+    except TypeError:
+        fondo_lvl_2[0] = lista_fondos_lvl_2[0]
     fondo_lvl_2[0]=pygame.transform.scale(fondo_lvl_2[0],TAMAÑO_PANTALLA)
     #/FONDO
 

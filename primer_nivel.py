@@ -119,8 +119,7 @@ def nivel_1():
             acciones_personaje(lista_teclas,PANTALLA,fondo_lvl_1,vin,esta_pisando,lista_plataforma1,lista_ogros)
             lista_monedas = enemigos(PANTALLA,lista_ogros,vin,lista_plataforma1,lista_monedas)
             monedas(PANTALLA,lista_monedas,vin)
-        else: 
-            PANTALLA.blit(fondo_lvl_1[0],(0,0))
+        else:                 
             PANTALLA.blit(vin._dict_imagenes["muerta"][0],(vin._rectangulo.x,vin._rectangulo.y+vin._tamaño[1]))
             return 0
 

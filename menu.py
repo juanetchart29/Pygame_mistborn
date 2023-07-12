@@ -231,6 +231,7 @@ def input_name(score):
             
 pygame.display.set_caption("Menu")
 
+
 def main_menu():
     cancion_menu()
     cambio_musica = False

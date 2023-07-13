@@ -73,7 +73,8 @@ class Personaje(GameObject):
                     imagen_cargada = pygame.image.load(ruta_imagen)
                     if keys.endswith("_i"):
                         imagen_cargada = pygame.transform.flip(imagen_cargada,True,False) 
-                except:
+                except Exception as e:
+                    print(e) 
                     imagen_cargada = ruta_imagen    
                 imagen_cargada = pygame.transform.scale(imagen_cargada,self._tamaño)
                 #si la clave del diccionario termina con _i rota la imagen 
